@@ -514,13 +514,15 @@ footer {
     <p id="writing-description" class="activity-text">Follow the path with your finger or pencil.</p>
 
     <div class="practice-path">
-      <svg id="writing-svg" class="practice-svg" viewBox="0 0 300 140" role="img" aria-label="Pre-writing tracing practice">
+     <canvas id="writing-canvas" class="practice-svg"></canvas>   role="img" aria-label="Pre-writing tracing practice">
         <path d="M35 70 L265 70" stroke="#B7DCEC" stroke-width="5" stroke-dasharray="5 8" fill="none" stroke-linecap="round"/>
         <circle cx="35" cy="70" r="7" fill="#E89D61"/>
         <circle cx="265" cy="70" r="7" fill="#9CCBA7"/>
       </svg>
     </div>
-
+<div class="slider-controls">
+  <button class="btn-nav" onclick="clearDrawing()">🧽 Clear</button>
+</div>
     <div class="slider-controls">
       <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)" disabled>← Back</button>
       <span id="slideIndicator">1 / 8</span>
@@ -759,7 +761,93 @@ function changeSlide(direction) {
   currentSlide = Math.max(0, Math.min(currentSlide, writingSlides.length - 1));
   renderSlide();
 }
-renderSlide();
+const canvas = document.getElementById('writing-canvas');
+const ctx = canvas.getContext('2d');
+
+let drawing = false;
+let lastPoint = null;
+
+function setupCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  drawGuide();
+}
+
+function drawGuide() {
+  const slide = writingSlides[currentSlide];
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // الخط المنقّط الأصلي
+  ctx.save();
+  ctx.scale(w / 300, h / 140);
+  ctx.beginPath();
+
+  const path = new Path2D(slide.path);
+  ctx.strokeStyle = '#B7DCEC';
+  ctx.lineWidth = 5;
+  ctx.setLineDash([5, 8]);
+  ctx.stroke(path);
+
+  ctx.restore();
+  ctx.setLineDash([]);
+}
+
+function getPoint(event) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top
+  };
+}
+
+canvas.style.touchAction = 'none';
+
+canvas.addEventListener('pointerdown', event => {
+  drawing = true;
+  lastPoint = getPoint(event);
+  canvas.setPointerCapture(event.pointerId);
+});
+
+canvas.addEventListener('pointermove', event => {
+  if (!drawing || !lastPoint) return;
+
+  const point = getPoint(event);
+
+  ctx.beginPath();
+  ctx.moveTo(lastPoint.x, lastPoint.y);
+  ctx.lineTo(point.x, point.y);
+  ctx.strokeStyle = '#E89D61';
+  ctx.lineWidth = 5;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  lastPoint = point;
+});
+
+function stopDrawing() {
+  drawing = false;
+  lastPoint = null;
+}
+
+canvas.addEventListener('pointerup', stopDrawing);
+canvas.addEventListener('pointercancel', stopDrawing);
+
+function clearDrawing() {
+  setupCanvas();
+  }
+  renderSlide();
 </script>
 
 </body>
