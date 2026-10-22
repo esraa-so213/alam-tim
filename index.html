@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tim's Little World</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,9 +15,6 @@
             --primary-accent: #E89D61;
             --soft-blue: #D0E8F2;
             --soft-beige: #F5EBE6;
-            --soft-green: #D8E6D3;
-            --soft-yellow: #F9E9BE;
-            --soft-pink: #F5D6CE;
             --brown-dark: #4A3E3D;
         }
 
@@ -35,19 +31,16 @@
             overflow-x: hidden;
         }
 
-        /* Hero Header with Baby Blue Cloud & Bear */
         header {
             background: linear-gradient(180deg, #C2E3F4 0%, #E8F5FC 70%, var(--bg-color) 100%);
-            position: relative;
-            padding: 40px 20px 50px;
+            padding: 40px 20px 40px;
             text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
         }
 
         .header-title {
-            font-family: 'Fredoka', cursive;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             color: var(--brown-dark);
             margin-bottom: 5px;
         }
@@ -58,23 +51,15 @@
             margin-bottom: 15px;
         }
 
-        .hero-bear-cloud {
+        .hero-cloud {
             display: inline-block;
             background: #FFFFFF;
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(189, 217, 235, 0.5);
-            font-size: 3.5rem;
-            margin-top: 10px;
-            animation: bounce 3s infinite ease-in-out;
+            padding: 12px 25px;
+            border-radius: 40px;
+            box-shadow: 0 6px 15px rgba(189, 217, 235, 0.4);
+            font-size: 3rem;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -83,174 +68,106 @@
 
         .section-title {
             text-align: center;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--brown-dark);
             margin: 30px 0 20px;
-            font-weight: 700;
         }
 
-        /* Main 2 Cards (Arabic & English) */
+        /* Main 2 Cards */
         .main-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-bottom: 30px;
         }
 
-        /* Cloud Shaped Card */
         .cloud-card {
             background: var(--card-bg);
-            border: 3px solid #F2E8DC;
-            border-radius: 40px 15px 40px 15px;
-            padding: 30px 20px;
+            border: 2px solid var(--card-border);
+            border-radius: 30px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(92, 74, 62, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
             text-decoration: none;
             color: inherit;
-        }
-
-        .cloud-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(92, 74, 62, 0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            display: block;
         }
 
         .card-img-placeholder {
-            width: 110px;
-            height: 110px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 15px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+            font-size: 3rem;
         }
 
         .bg-beige-cloud { background-color: var(--soft-beige); }
         .bg-blue-cloud { background-color: var(--soft-blue); }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--brown-dark);
             margin-bottom: 5px;
         }
 
         .card-sub {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 15px;
         }
 
         .btn-explore {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: inline-block;
             font-weight: 700;
             color: var(--brown-dark);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             background: var(--soft-beige);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 20px;
         }
 
-        /* English Folders Grid */
+        /* Folders Grid */
         .grid-folders {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
 
         .folder-cloud-item {
             background: var(--card-bg);
             border: 2px solid var(--card-border);
-            border-radius: 30px;
-            padding: 22px 15px;
-            text-align: center;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.02);
-        }
-
-        .folder-cloud-item:hover {
-            border-color: var(--primary-accent);
-            transform: scale(1.03);
-        }
-
-        .folder-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-        }
-
-        .folder-name {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--brown-dark);
-        }
-
-        .folder-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* Animals Inside Section */
-        .animals-sub-container {
-            background: var(--soft-beige);
-            border-radius: 30px;
-            padding: 25px;
-            margin-top: 25px;
-        }
-
-        .animals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .animal-card {
-            background: #FFFFFF;
             border-radius: 25px;
-            padding: 15px;
+            padding: 20px 10px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* Handwriting Interactive Practice Slider */
+        .folder-icon { font-size: 2rem; margin-bottom: 5px; }
+        .folder-name { font-weight: 700; font-size: 0.95rem; color: var(--brown-dark); }
+        .folder-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+
+        /* Practice Slider */
         .practice-box {
             background: #FFFFFF;
-            border: 3px dashed var(--primary-accent);
-            border-radius: 30px;
-            padding: 30px 20px;
+            border: 2px dashed var(--primary-accent);
+            border-radius: 25px;
+            padding: 25px 15px;
             text-align: center;
             margin-top: 20px;
         }
 
-        .practice-slide {
-            display: none;
-        }
-
-        .practice-slide.active {
-            display: block;
-        }
-
-        .practice-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--brown-dark);
-            margin-top: 15px;
-        }
+        .practice-slide { display: none; }
+        .practice-slide.active { display: block; }
 
         .slider-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
         }
 
@@ -258,24 +175,192 @@
             background: var(--primary-accent);
             color: #FFFFFF;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 8px 16px;
+            border-radius: 15px;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(232, 157, 97, 0.4);
         }
 
-        .btn-nav:disabled {
-            background: #D5C9BD;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
+        .btn-nav:disabled { background: #D5C9BD; }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="header-title">Tim’s Little World</h1>
+        <p class="header-subtitle">My First Words</p>
+        <div class="hero-cloud">☁️🧸☁️</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Main 2 Cards -->
+        <div class="main-categories">
+            <a href="#arabic-section" class="cloud-card">
+                <div class="card-img-placeholder bg-beige-cloud">🧸🎨</div>
+                <div class="card-title">My First Words in Arabic</div>
+                <div class="card-sub">Explore Arabic</div>
+                <div class="btn-explore">Explore Arabic →</div>
+            </a>
+
+            <a href="#english-section" class="cloud-card">
+                <div class="card-img-placeholder bg-blue-cloud">🐻🔤</div>
+                <div class="card-title">My First Words in English</div>
+                <div class="card-sub">Explore English</div>
+                <div class="btn-explore">Explore English →</div>
+            </a>
+        </div>
+
+        <hr style="border: none; border-top: 2px dashed var(--card-border); margin: 30px 0;">
+
+        <!-- English Section -->
+        <section id="english-section">
+            <h2 class="section-title">English World 🇬🇧</h2>
+            
+            <div class="grid-folders">
+                <div class="folder-cloud-item" style="background-color: #FAF2E8;">
+                    <div class="folder-icon">🐻🐮</div>
+                    <div class="folder-name">Animals</div>
+                    <div class="folder-desc">Farm • Wild • Pets</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🐦</div>
+                    <div class="folder-name">Birds</div>
+                    <div class="folder-desc">Bird • Duck • Owl</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🥕</div>
+                    <div class="folder-name">Vegetables</div>
+                    <div class="folder-desc">Carrot • Tomato</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🍎</div>
+                    <div class="folder-name">Fruits</div>
+                    <div class="folder-desc">Apple • Banana</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🎨</div>
+                    <div class="folder-name">Colors</div>
+                    <div class="folder-desc">Red • Blue • Yellow</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🔢</div>
+                    <div class="folder-name">Numbers</div>
+                    <div class="folder-desc">One • Two • Three</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🚗</div>
+                    <div class="folder-name">Transportation</div>
+                    <div class="folder-desc">Car • Bus • Train</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🔤</div>
+                    <div class="folder-name">English Letters</div>
+                    <div class="folder-desc">A • B • C</div>
+                </div>
+
+                <div class="folder-cloud-item">
+                    <div class="folder-icon">🔺</div>
+                    <div class="folder-name">Shapes</div>
+                    <div class="folder-desc">Circle • Square</div>
+                </div>
+
+                <div class="folder-cloud-item" style="background-color: #EBF7EE;">
+                    <div class="folder-icon">🧩</div>
+                    <div class="folder-name">Games</div>
+                    <div class="folder-desc">Learn and Play</div>
+                </div>
+
+                <div class="folder-cloud-item" style="background-color: #FFF3F0;">
+                    <div class="folder-icon">📚</div>
+                    <div class="folder-name">Stories</div>
+                    <div class="folder-desc">Little Bear Stories</div>
+                </div>
+
+                <div class="folder-cloud-item" style="background-color: #EBF4FC;">
+                    <div class="folder-icon">🐻⬆️</div>
+                    <div class="folder-name">Directions</div>
+                    <div class="folder-desc">Up • Down • Right • Left</div>
+                </div>
+            </div>
+
+            <!-- Handwriting Section -->
+            <div style="margin-top: 30px;">
+                <h2 class="section-title">Handwriting & Tracing ✏️</h2>
+                
+                <div class="practice-box">
+                    <div class="practice-slide active" id="slide-1">
+                        <div style="font-size: 2.5rem;">🧸✏️</div>
+                        <div style="font-size: 1.8rem; margin: 10px 0;">〰️〰️〰️〰️</div>
+                        <div class="folder-name">خطوط منحنية ومتعرجة</div>
+                    </div>
+
+                    <div class="practice-slide" id="slide-2">
+                        <div style="font-size: 2.5rem;">🚗✏️</div>
+                        <div style="font-size: 1.8rem; margin: 10px 0;">➖➖➖➖</div>
+                        <div class="folder-name">خطوط مستقيمة</div>
+                    </div>
+
+                    <div class="practice-slide" id="slide-3">
+                        <div style="font-size: 2.5rem;">🐻🕳️</div>
+                        <div style="font-size: 1.8rem; margin: 10px 0;">➰➰➰➰</div>
+                        <div class="folder-name">التحكم في القلم</div>
+                    </div>
+
+                    <div class="practice-slide" id="slide-4">
+                        <div style="font-size: 2.5rem;">🔴🟦🔺</div>
+                        <div style="font-size: 1.8rem; margin: 10px 0;">◯ ⬜ 🛈</div>
+                        <div class="folder-name">تتبع الأشكال</div>
+                    </div>
+
+                    <div class="slider-controls">
+                        <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)" disabled>⬅ Back</button>
+                        <span id="slideIndicator" style="font-weight:700;">1 / 4</span>
+                        <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Next ➔</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Little Steps • Big Dreams 💫</p>
+        <p style="margin-top: 5px;">Tim's Little World</p>
+    </footer>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function changeSlide(direction) {
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            currentSlide += direction;
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+            document.getElementById('slideIndicator').innerText = `${currentSlide} / ${totalSlides}`;
+        }
+    </script>
+</body>
+</html>
 
 
       
