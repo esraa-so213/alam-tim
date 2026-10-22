@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#65c9f4">
+  <meta name="description" content="عالم تيم: ألعاب تعليمية وقصص للأطفال بالعربية والإنجليزية.">
+  <title>عالم تيم ⭐ | Tim's Little World</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="عالم تيم">
+      <span class="brand-star">★</span><span><b>عالم تيم</b><small>Tim's Little World</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+    <nav id="mainNav">
+      <a href="#games">ألعاب تعليمية</a>
+      <a href="#letters">الحروف والأصوات</a>
+      <a href="#numbers">الأرقام والألوان</a>
+      <a href="#stories">قصص تيم</a>
+      <a href="#parents">للأهل</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">نتعلم ونلعب ونكبر سوا ✨</span>
+        <h1>مرحبًا يا بطل!<br><span>أنا تيم</span> 👋</h1>
+        <p>تعال نكتشف الحروف والأرقام ونسمع حكايات جميلة في عالم مليان ألوان ومرح.</p>
+        <div class="hero-actions">
+          <a class="btn btn-pink" href="#games">ابدأ اللعب ▶</a>
+          <a class="btn btn-white" href="#stories">اسمع حكاية 📖</a>
+        </div>
+        <div class="hero-pills"><span>🔤 حروف</span><span>🔢 أرقام</span><span>🎧 قصص بصوت ماما</span></div>
+      </div>
+      <div class="hero-art" aria-label="رسم كرتوني لبيت تيم">
+        <div class="sun">☀️</div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+        <div class="rainbow">🌈</div>
+        <div class="tree tree-left">🌳</div><div class="tree tree-right">🌲</div>
+        <div class="house"><div class="roof"></div><div class="house-face"><span>تيم</span><div class="window">▦</div><div class="door"></div></div></div>
+        <div class="cartoon-boy"><div class="hair">〰</div><div class="face"><span class="eye eye-l"></span><span class="eye eye-r"></span><span class="smile">⌣</span></div><div class="body">★</div><div class="arm">╱</div></div>
+        <div class="floating f1">⭐</div><div class="floating f2">🦋</div><div class="floating f3">🍎</div>
+      </div>
+    </section>
+
+    <section class="category-grid" aria-label="أقسام الموقع">
+      <a class="category cat-purple" href="#games"><span>🎮</span><b>ألعاب تعليمية</b><small>نتعلم باللعب</small></a>
+      <a class="category cat-pink" href="#stories"><span>📚</span><b>قصص كرتونية</b><small>بصوتك الحقيقي</small></a>
+      <a class="category cat-green" href="#letters"><span>🔤</span><b>الحروف والأصوات</b><small>عربي وEnglish</small></a>
+      <a class="category cat-yellow" href="#numbers"><span>🔢</span><b>الأرقام والألوان</b><small>أنشطة ممتعة</small></a>
+    </section>
+
+    <section class="section" id="games">
+      <div class="section-heading"><div><span class="eyebrow">وقت المرح</span><h2>ألعاب تيم التعليمية 🎮</h2></div><p>اختار لعبة وابدأ المغامرة!</p></div>
+      <div class="game-grid">
+        <article class="game-card game-apple">
+          <div class="game-illustration">🍎 <span>Aa</span></div><h3>صيد الحرف الصحيح</h3><p>اختار أول حرف في كلمة Apple.</p>
+          <button class="btn btn-purple" id="startLetterGame">العب الآن</button>
+        </article>
+        <article class="game-card game-count">
+          <div class="game-illustration">⭐ ⭐ ⭐</div><h3>عدّ النجوم</h3><p>عدّ النجوم واختار العدد الصحيح.</p>
+          <button class="btn btn-green" id="startNumberGame">العب الآن</button>
+        </article>
+        <article class="game-card game-shapes">
+          <div class="game-illustration">🔺 🔵 🟨</div><h3>عالم الأشكال</h3><p>تعرف على الأشكال والألوان.</p>
+          <button class="btn btn-orange" id="startShapeGame">العب الآن</button>
+        </article>
+      </div>
+      <div class="play-area" id="playArea" aria-live="polite">
+        <div class="play-placeholder"><span>🧩</span><b>اللعبة هتظهر هنا</b><small>اختار واحدة من الألعاب فوق</small></div>
+      </div>
+      <p class="score-line" id="scoreLine" aria-live="polite">نقاطك: <b id="score">0</b> ⭐</p>
+    </section>
+
+    <section class="section letter-section" id="letters">
+      <div class="section-heading"><div><span class="eyebrow">خطوة خطوة</span><h2>الحروف والأصوات 🔤</h2></div><p>اضغط على الحرف لتتعرف عليه.</p></div>
+      <div class="language-tabs" role="group" aria-label="اختيار اللغة">
+        <button class="lang-tab active" data-lang="en">English</button>
+        <button class="lang-tab" data-lang="ar">العربية</button>
+      </div>
+      <div class="letter-board" id="letterBoard"></div>
+      <div class="letter-detail" id="letterDetail"><span class="detail-emoji">🍎</span><div><b>اختار حرفًا</b><p>هنا هنضيف صوته وكلمة تبدأ به.</p></div><button id="speakLetter" class="sound-btn" aria-label="تشغيل النطق">🔊</button></div>
+      <p class="hint">ملاحظة: النطق هنا تجريبي باستخدام صوت الجهاز، ويمكنكِ استبداله بتسجيلاتك الخاصة لاحقًا.</p>
+    </section>
+
+    <section class="section numbers-section" id="numbers">
+      <div class="section-heading"><div><span class="eyebrow">واحد، اتنين، تلاتة</span><h2>الأرقام والألوان 🔢</h2></div><p>عدّ مع تيم!</p></div>
+      <div class="number-showcase">
+        <div class="counting-stars" id="countingStars">⭐ ⭐ ⭐</div>
+        <h3 id="countQuestion">كام نجمة شايف؟</h3>
+        <div class="number-options" id="numberOptions">
+          <button data-number="2">٢</button><button data-number="3">٣</button><button data-number="4">٤</button>
+        </div>
+        <p id="numberFeedback" aria-live="polite">اختار الإجابة الصحيحة.</p>
+        <button class="btn btn-yellow" id="newCount">لعبة جديدة 🔄</button>
+      </div>
+      <div class="color-row"><div><i class="dot dot-red"></i>أحمر</div><div><i class="dot dot-blue"></i>أزرق</div><div><i class="dot dot-yellow"></i>أصفر</div><div><i class="dot dot-green"></i>أخضر</div></div>
+    </section>
+
+    <section class="section stories-section" id="stories">
+      <div class="section-heading"><div><span class="eyebrow">حكاية قبل النوم أو وقت اللعب</span><h2>قصص تيم 📖</h2></div><p>ضيفي تسجيلاتك الصوتية بسهولة.</p></div>
+      <div class="stories-grid">
+        <article class="story-card">
+          <div class="story-picture story-one">🐰 🌳 👦🏻</div><div class="story-info"><span class="story-tag">صداقة</span><h3>تيم والأرنب الصغير</h3><p>حكاية لطيفة عن الرفق بالحيوانات.</p><audio controls preload="none" id="audio1"><source src="audio/tim-rabbit.mp3" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio><small>لإضافة تسجيلك: استبدلي الملف audio/tim-rabbit.mp3 بملفك الصوتي بنفس الاسم.</small></div>
+        </article>
+        <article class="story-card">
+          <div class="story-picture story-two">🌷 🦋 🌞</div><div class="story-info"><span class="story-tag">اكتشاف</span><h3>تيم في الحديقة</h3><p>تيم يتعلم أسماء الألوان من الطبيعة.</p><audio controls preload="none" id="audio2"><source src="audio/tim-garden.mp3" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio><small>استبدلي الملف audio/tim-garden.mp3 بتسجيلك للحكاية الثانية.</small></div>
+        </article>
+      </div>
+      <div class="recording-tip"><span>🎙️</span><div><b>إزاي تسجلي صوتك؟</b><p>استخدمي مسجل الصوت في الموبايل، واحفظي التسجيل بصيغة MP3. ضعي الملف داخل مجلد <code>audio</code> وسمّيه بالاسم المكتوب تحت القصة. لا ترفعي ملفات صوتية فارغة مكان التسجيل.</p></div></div>
+    </section>
+
+    <section class="parent-section" id="parents">
+      <div class="parent-icon">💛</div><div><span class="eyebrow">ركن الأهل</span><h2>كل يوم خطوة صغيرة</h2><p>خلي وقت التعلم قصيرًا وممتعًا، وكرري الأصوات مع الطفل، وامدحي المحاولة مش الإجابة بس. الموقع نموذج تعليمي بسيط وليس بديلًا عن متابعة الطفل واحتياجاته.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-star">★</span><span><b>عالم تيم</b><small>Tim's Little World</small></span></a><p>كل طفل يستحق بداية جميلة 💫</p><a href="#home" class="back-top">العودة للأعلى ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
