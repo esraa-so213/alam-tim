@@ -35,28 +35,19 @@
             overflow-x: hidden;
         }
 
-        /* Hero Header with Clouds and Bear */
+        /* Hero Header with Baby Blue Cloud & Bear */
         header {
-            background: linear-gradient(180deg, #BDE0FE 0%, #E0F2FE 60%, var(--bg-color) 100%);
+            background: linear-gradient(180deg, #C2E3F4 0%, #E8F5FC 70%, var(--bg-color) 100%);
             position: relative;
-            padding: 40px 20px 60px;
+            padding: 40px 20px 50px;
             text-align: center;
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
         }
 
-        .cloud {
-            position: absolute;
-            background: #FFFFFF;
-            border-radius: 50px;
-            opacity: 0.85;
-        }
-        .cloud-1 { width: 100px; height: 40px; top: 20px; right: 10%; background: var(--soft-beige); }
-        .cloud-2 { width: 140px; height: 50px; top: 40px; left: 8%; background: #FFFFFF; }
-
         .header-title {
             font-family: 'Fredoka', cursive;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             color: var(--brown-dark);
             margin-bottom: 5px;
         }
@@ -64,19 +55,23 @@
         .header-subtitle {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .hero-bear {
-            font-size: 4rem;
-            margin-top: 10px;
+        .hero-bear-cloud {
             display: inline-block;
+            background: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(189, 217, 235, 0.5);
+            font-size: 3.5rem;
+            margin-top: 10px;
             animation: bounce 3s infinite ease-in-out;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Container */
@@ -97,42 +92,44 @@
         /* Main 2 Cards (Arabic & English) */
         .main-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .category-card {
+        /* Cloud Shaped Card */
+        .cloud-card {
             background: var(--card-bg);
-            border: 2px solid var(--card-border);
-            border-radius: 25px;
-            padding: 25px;
+            border: 3px solid #F2E8DC;
+            border-radius: 40px 15px 40px 15px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(92, 74, 62, 0.04);
+            box-shadow: 0 10px 25px rgba(92, 74, 62, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
         }
 
-        .category-card:hover {
+        .cloud-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(92, 74, 62, 0.08);
+            box-shadow: 0 15px 30px rgba(92, 74, 62, 0.1);
         }
 
         .card-img-placeholder {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             margin: 0 auto 15px;
-            border-radius: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
         }
 
-        .bg-arabic { background-color: var(--soft-beige); }
-        .bg-english { background-color: #FFF0F3; }
+        .bg-beige-cloud { background-color: var(--soft-beige); }
+        .bg-blue-cloud { background-color: var(--soft-blue); }
 
         .card-title {
             font-size: 1.3rem;
@@ -153,45 +150,39 @@
             justify-content: center;
             gap: 8px;
             font-weight: 700;
-            color: var(--text-muted);
+            color: var(--brown-dark);
             font-size: 0.95rem;
+            background: var(--soft-beige);
+            padding: 8px 18px;
+            border-radius: 20px;
         }
 
-        .arrow-icon {
-            width: 28px;
-            height: 28px;
-            border: 2px solid var(--text-muted);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* English Grid Folders */
+        /* English Folders Grid */
         .grid-folders {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
+            gap: 18px;
             margin-top: 20px;
         }
 
-        .folder-item {
+        .folder-cloud-item {
             background: var(--card-bg);
-            border: 1.5px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px 15px;
+            border: 2px solid var(--card-border);
+            border-radius: 30px;
+            padding: 22px 15px;
             text-align: center;
             transition: all 0.2s ease;
             cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.02);
         }
 
-        .folder-item:hover {
+        .folder-cloud-item:hover {
             border-color: var(--primary-accent);
-            background-color: #FFFDF9;
+            transform: scale(1.03);
         }
 
         .folder-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 8px;
         }
 
@@ -207,223 +198,87 @@
             margin-top: 4px;
         }
 
-        /* Animals Section Horizontal Scroll / Grid */
+        /* Animals Inside Section */
+        .animals-sub-container {
+            background: var(--soft-beige);
+            border-radius: 30px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
         .animals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
 
         .animal-card {
-            border-radius: 20px;
+            background: #FFFFFF;
+            border-radius: 25px;
             padding: 15px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        /* Handwriting Interactive Practice Slider */
+        .practice-box {
+            background: #FFFFFF;
+            border: 3px dashed var(--primary-accent);
+            border-radius: 30px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .practice-slide {
+            display: none;
+        }
+
+        .practice-slide.active {
+            display: block;
+        }
+
+        .practice-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-top: 15px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
             margin-top: 20px;
         }
 
-        .skill-card {
-            background: var(--card-bg);
-            border: 2px solid var(--card-border);
+        .btn-nav {
+            background: var(--primary-accent);
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
             border-radius: 20px;
-            padding: 20px;
-            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(232, 157, 97, 0.4);
+        }
+
+        .btn-nav:disabled {
+            background: #D5C9BD;
+            box-shadow: none;
+            cursor: not-allowed;
         }
 
         footer {
             text-align: center;
             padding: 30px;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 40px;
-        }
-    </style>
-</head>
-<body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <h1 class="header-title">Tim’s Little World</h1>
-        <p class="header-subtitle">My First Words</p>
-        <div class="hero-bear">🧸📖</div>
-    </header>
 
-    <div class="container">
-        
-        <!-- Main 2 Categories -->
-        <div class="main-categories">
-            <!-- Arabic World -->
-            <a href="#arabic-section" class="category-card">
-                <div class="card-img-placeholder bg-arabic">
-                    🧸🎨
-                </div>
-                <div class="card-title">My First Words in Arabic</div>
-                <div class="card-sub">Explore Arabic</div>
-                <div class="btn-explore">
-                    <span>Explore Arabic</span>
-                    <div class="arrow-icon">→</div>
-                </div>
-            </a>
+      
 
-            <!-- English World -->
-            <a href="#english-section" class="category-card">
-                <div class="card-img-placeholder bg-english">
-                    🐻🔤
-                </div>
-                <div class="card-title">My First Words in English</div>
-                <div class="card-sub">Explore English</div>
-                <div class="btn-explore">
-                    <span>Explore English</span>
-                    <div class="arrow-icon">→</div>
-                </div>
-            </a>
-        </div>
-
-        <hr style="border: none; border-top: 2px dashed var(--card-border); margin: 40px 0;">
-
-        <!-- English World Section -->
-        <section id="english-section">
-            <h2 class="section-title">English World 🇬🇧</h2>
-            
-            <div class="grid-folders">
-                <div class="folder-item">
-                    <div class="folder-icon">🐦</div>
-                    <div class="folder-name">Birds</div>
-                    <div class="folder-desc">Bird • Duck • Owl</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🐮</div>
-                    <div class="folder-name">Animal Sounds</div>
-                    <div class="folder-desc">Cow • Horse • Cat</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🥕</div>
-                    <div class="folder-name">Vegetables</div>
-                    <div class="folder-desc">Carrot • Tomato</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🍎</div>
-                    <div class="folder-name">Fruits</div>
-                    <div class="folder-desc">Apple • Banana</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🎨</div>
-                    <div class="folder-name">Colors</div>
-                    <div class="folder-desc">Red • Blue • Yellow</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🔢</div>
-                    <div class="folder-name">Numbers</div>
-                    <div class="folder-desc">One • Two • Three</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🧩</div>
-                    <div class="folder-name">Games</div>
-                    <div class="folder-desc">Learn and Play</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🚗</div>
-                    <div class="folder-name">Transportation</div>
-                    <div class="folder-desc">Car • Bus • Train</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🔤</div>
-                    <div class="folder-name">English Letters</div>
-                    <div class="folder-desc">A • B • C</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">📚</div>
-                    <div class="folder-name">Stories</div>
-                    <div class="folder-desc">Little Bear Stories</div>
-                </div>
-
-                <div class="folder-item">
-                    <div class="folder-icon">🔺</div>
-                    <div class="folder-name">Shapes</div>
-                    <div class="folder-desc">Circle • Square</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Animals Exploration Section -->
-        <section style="margin-top: 50px;">
-            <h2 class="section-title">Explore Our Animals 🐾</h2>
-            <div class="animals-grid">
-                <div class="animal-card" style="background-color: var(--soft-beige);">
-                    <div style="font-size: 2.5rem;">🐻🐮</div>
-                    <h3 class="folder-name">Animals</h3>
-                    <p class="folder-desc">Meet our friends</p>
-                </div>
-                <div class="animal-card" style="background-color: var(--soft-green);">
-                    <div style="font-size: 2.5rem;">🐄🐥</div>
-                    <h3 class="folder-name">Farm Animals</h3>
-                    <p class="folder-desc">On the farm</p>
-                </div>
-                <div class="animal-card" style="background-color: var(--soft-yellow);">
-                    <div style="font-size: 2.5rem;">🦁🐘</div>
-                    <h3 class="folder-name">Wild Animals</h3>
-                    <p class="folder-desc">Explore jungle</p>
-                </div>
-                <div class="animal-card" style="background-color: var(--soft-pink);">
-                    <div style="font-size: 2.5rem;">🐶🐱</div>
-                    <h3 class="folder-name">Pets</h3>
-                    <p class="folder-desc">Our furry friends</p>
-                </div>
-                <div class="animal-card" style="background-color: var(--soft-blue);">
-                    <div style="font-size: 2.5rem;">🐬🐢</div>
-                    <h3 class="folder-name">Sea Animals</h3>
-                    <p class="folder-desc">Discover ocean</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- KG Skills Section -->
-        <section style="margin-top: 50px;">
-            <h2 class="section-title">KG Skills ✏️</h2>
-            <div class="skills-grid">
-                <!-- Directions -->
-                <div class="skill-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🐻⬆️</div>
-                    <h3 class="card-title">Directions / الاتجاهات</h3>
-                    <p class="card-sub" dir="ltr">Up • Down • Right • Left</p>
-                    <p class="card-sub">فوق • تحت • يمين • شمال</p>
-                </div>
-
-                <!-- Writing Skills -->
-                <div class="skill-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">✏️〰️</div>
-                    <h3 class="card-title">Handwriting & Tracing</h3>
-                    <p class="card-sub" dir="ltr">Straight • Curved • Shapes</p>
-                    <p class="card-sub">خطوط مستقيمة • منحنية • تتبع الأشكال</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>Little Steps • Big Dreams 💫</p>
-        <p style="margin-top: 5px;">Tim's Little World</p>
-    </footer>
-
-</body>
-</html>
+      
+      
