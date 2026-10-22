@@ -1,127 +1,429 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#65c9f4">
-  <meta name="description" content="Tim's Little World - My First Words: كلمات عربية وإنجليزية وأصوات وألعاب بسيطة للأطفال من سنة إلى 3 سنوات.">
-  <title>Tim's Little World - My First Words</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim's Little World</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAF7F2;
+            --card-bg: #FFFFFF;
+            --card-border: #F3EBDD;
+            --text-color: #5C4A3E;
+            --text-muted: #8C7A6B;
+            --primary-accent: #E89D61;
+            --soft-blue: #D0E8F2;
+            --soft-beige: #F5EBE6;
+            --soft-green: #D8E6D3;
+            --soft-yellow: #F9E9BE;
+            --soft-pink: #F5D6CE;
+            --brown-dark: #4A3E3D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Fredoka', 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Hero Header with Clouds and Bear */
+        header {
+            background: linear-gradient(180deg, #BDE0FE 0%, #E0F2FE 60%, var(--bg-color) 100%);
+            position: relative;
+            padding: 40px 20px 60px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .cloud {
+            position: absolute;
+            background: #FFFFFF;
+            border-radius: 50px;
+            opacity: 0.85;
+        }
+        .cloud-1 { width: 100px; height: 40px; top: 20px; right: 10%; background: var(--soft-beige); }
+        .cloud-2 { width: 140px; height: 50px; top: 40px; left: 8%; background: #FFFFFF; }
+
+        .header-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.2rem;
+            color: var(--brown-dark);
+            margin-bottom: 5px;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .hero-bear {
+            font-size: 4rem;
+            margin-top: 10px;
+            display: inline-block;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--brown-dark);
+            margin: 30px 0 20px;
+            font-weight: 700;
+        }
+
+        /* Main 2 Cards (Arabic & English) */
+        .main-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(92, 74, 62, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(92, 74, 62, 0.08);
+        }
+
+        .card-img-placeholder {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .bg-arabic { background-color: var(--soft-beige); }
+        .bg-english { background-color: #FFF0F3; }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-bottom: 5px;
+        }
+
+        .card-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .arrow-icon {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* English Grid Folders */
+        .grid-folders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .folder-item {
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .folder-item:hover {
+            border-color: var(--primary-accent);
+            background-color: #FFFDF9;
+        }
+
+        .folder-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .folder-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--brown-dark);
+        }
+
+        .folder-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Animals Section Horizontal Scroll / Grid */
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .animal-card {
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-  
-<a class="brand" href="#home" aria-label="Tim's Little World">
-  <span class="brand-star">★</span>
-  <span><b>Tim's Little World</b><small>My First Words</small></span>
-</a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-    <nav id="mainNav">
-      <a href="#games">ألعاب تعليمية</a>
-      <a href="#letters">الحروف والأصوات</a>
-      <a href="#numbers">الأرقام والألوان</a>
-      <a href="#stories">قصص تيم</a>
-      <a href="#parents">للأهل</a>
-    </nav>
-  </header>
+    <!-- Header Section -->
+    <header>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <h1 class="header-title">Tim’s Little World</h1>
+        <p class="header-subtitle">My First Words</p>
+        <div class="hero-bear">🧸📖</div>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <span class="eyebrow">نتعلم ونلعب ونكبر سوا ✨</span>
-        <h1>مرحبًا يا بطل!<br><span>أنا تيم</span> 👋</h1>
-        <p>تعال نكتشف الحروف والأرقام ونسمع حكايات جميلة في عالم مليان ألوان ومرح.</p>
-        <div class="hero-actions">
-          <a class="btn btn-pink" href="#games">ابدأ اللعب ▶</a>
-          <a class="btn btn-white" href="#stories">اسمع حكاية 📖</a>
+    <div class="container">
+        
+        <!-- Main 2 Categories -->
+        <div class="main-categories">
+            <!-- Arabic World -->
+            <a href="#arabic-section" class="category-card">
+                <div class="card-img-placeholder bg-arabic">
+                    🧸🎨
+                </div>
+                <div class="card-title">My First Words in Arabic</div>
+                <div class="card-sub">Explore Arabic</div>
+                <div class="btn-explore">
+                    <span>Explore Arabic</span>
+                    <div class="arrow-icon">→</div>
+                </div>
+            </a>
+
+            <!-- English World -->
+            <a href="#english-section" class="category-card">
+                <div class="card-img-placeholder bg-english">
+                    🐻🔤
+                </div>
+                <div class="card-title">My First Words in English</div>
+                <div class="card-sub">Explore English</div>
+                <div class="btn-explore">
+                    <span>Explore English</span>
+                    <div class="arrow-icon">→</div>
+                </div>
+            </a>
         </div>
-        <div class="hero-pills"><span>🔤 حروف</span><span>🔢 أرقام</span><span>🎧 قصص بصوت ماما</span></div>
-      </div>
-      <div class="hero-art" aria-label="رسم كرتوني لبيت تيم">
-        <div class="sun">☀️</div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
-        <div class="rainbow">🌈</div>
-        <div class="tree tree-left">🌳</div><div class="tree tree-right">🌲</div>
-        <div class="house"><div class="roof"></div><div class="house-face"><span>تيم</span><div class="window">▦</div><div class="door"></div></div></div>
-        <div class="cartoon-boy"><div class="hair">〰</div><div class="face"><span class="eye eye-l"></span><span class="eye eye-r"></span><span class="smile">⌣</span></div><div class="body">★</div><div class="arm">╱</div></div>
-        <div class="floating f1">⭐</div><div class="floating f2">🦋</div><div class="floating f3">🍎</div>
-      </div>
-    </section>
 
-    <section class="category-grid" aria-label="أقسام الموقع">
-      <a class="category cat-purple" href="#games"><span>🎮</span><b>ألعاب تعليمية</b><small>نتعلم باللعب</small></a>
-      <a class="category cat-pink" href="#stories"><span>📚</span><b>قصص كرتونية</b><small>بصوتك الحقيقي</small></a>
-      <a class="category cat-green" href="#letters"><span>🔤</span><b>الحروف والأصوات</b><small>عربي وEnglish</small></a>
-      <a class="category cat-yellow" href="#numbers"><span>🔢</span><b>الأرقام والألوان</b><small>أنشطة ممتعة</small></a>
-    </section>
+        <hr style="border: none; border-top: 2px dashed var(--card-border); margin: 40px 0;">
 
-    <section class="section" id="games">
-      <div class="section-heading"><div><span class="eyebrow">وقت المرح</span><h2>ألعاب تيم التعليمية 🎮</h2></div><p>اختار لعبة وابدأ المغامرة!</p></div>
-      <div class="game-grid">
-        <article class="game-card game-apple">
-          <div class="game-illustration">🍎 <span>Aa</span></div><h3>صيد الحرف الصحيح</h3><p>اختار أول حرف في كلمة Apple.</p>
-          <button class="btn btn-purple" id="startLetterGame">العب الآن</button>
-        </article>
-        <article class="game-card game-count">
-          <div class="game-illustration">⭐ ⭐ ⭐</div><h3>عدّ النجوم</h3><p>عدّ النجوم واختار العدد الصحيح.</p>
-          <button class="btn btn-green" id="startNumberGame">العب الآن</button>
-        </article>
-        <article class="game-card game-shapes">
-          <div class="game-illustration">🔺 🔵 🟨</div><h3>عالم الأشكال</h3><p>تعرف على الأشكال والألوان.</p>
-          <button class="btn btn-orange" id="startShapeGame">العب الآن</button>
-        </article>
-      </div>
-      <div class="play-area" id="playArea" aria-live="polite">
-        <div class="play-placeholder"><span>🧩</span><b>اللعبة هتظهر هنا</b><small>اختار واحدة من الألعاب فوق</small></div>
-      </div>
-      <p class="score-line" id="scoreLine" aria-live="polite">نقاطك: <b id="score">0</b> ⭐</p>
-    </section>
+        <!-- English World Section -->
+        <section id="english-section">
+            <h2 class="section-title">English World 🇬🇧</h2>
+            
+            <div class="grid-folders">
+                <div class="folder-item">
+                    <div class="folder-icon">🐦</div>
+                    <div class="folder-name">Birds</div>
+                    <div class="folder-desc">Bird • Duck • Owl</div>
+                </div>
 
-    <section class="section letter-section" id="letters">
-      <div class="section-heading"><div><span class="eyebrow">خطوة خطوة</span><h2>الحروف والأصوات 🔤</h2></div><p>اضغط على الحرف لتتعرف عليه.</p></div>
-      <div class="language-tabs" role="group" aria-label="اختيار اللغة">
-        <button class="lang-tab active" data-lang="en">English</button>
-        <button class="lang-tab" data-lang="ar">العربية</button>
-      </div>
-      <div class="letter-board" id="letterBoard"></div>
-      <div class="letter-detail" id="letterDetail"><span class="detail-emoji">🍎</span><div><b>اختار حرفًا</b><p>هنا هنضيف صوته وكلمة تبدأ به.</p></div><button id="speakLetter" class="sound-btn" aria-label="تشغيل النطق">🔊</button></div>
-      <p class="hint">ملاحظة: النطق هنا تجريبي باستخدام صوت الجهاز، ويمكنكِ استبداله بتسجيلاتك الخاصة لاحقًا.</p>
-    </section>
+                <div class="folder-item">
+                    <div class="folder-icon">🐮</div>
+                    <div class="folder-name">Animal Sounds</div>
+                    <div class="folder-desc">Cow • Horse • Cat</div>
+                </div>
 
-    <section class="section numbers-section" id="numbers">
-      <div class="section-heading"><div><span class="eyebrow">واحد، اتنين، تلاتة</span><h2>الأرقام والألوان 🔢</h2></div><p>عدّ مع تيم!</p></div>
-      <div class="number-showcase">
-        <div class="counting-stars" id="countingStars">⭐ ⭐ ⭐</div>
-        <h3 id="countQuestion">كام نجمة شايف؟</h3>
-        <div class="number-options" id="numberOptions">
-          <button data-number="2">٢</button><button data-number="3">٣</button><button data-number="4">٤</button>
-        </div>
-        <p id="numberFeedback" aria-live="polite">اختار الإجابة الصحيحة.</p>
-        <button class="btn btn-yellow" id="newCount">لعبة جديدة 🔄</button>
-      </div>
-      <div class="color-row"><div><i class="dot dot-red"></i>أحمر</div><div><i class="dot dot-blue"></i>أزرق</div><div><i class="dot dot-yellow"></i>أصفر</div><div><i class="dot dot-green"></i>أخضر</div></div>
-    </section>
+                <div class="folder-item">
+                    <div class="folder-icon">🥕</div>
+                    <div class="folder-name">Vegetables</div>
+                    <div class="folder-desc">Carrot • Tomato</div>
+                </div>
 
-    <section class="section stories-section" id="stories">
-      <div class="section-heading"><div><span class="eyebrow">حكاية قبل النوم أو وقت اللعب</span><h2>قصص تيم 📖</h2></div><p>ضيفي تسجيلاتك الصوتية بسهولة.</p></div>
-      <div class="stories-grid">
-        <article class="story-card">
-          <div class="story-picture story-one">🐰 🌳 👦🏻</div><div class="story-info"><span class="story-tag">صداقة</span><h3>تيم والأرنب الصغير</h3><p>حكاية لطيفة عن الرفق بالحيوانات.</p><audio controls preload="none" id="audio1"><source src="audio/tim-rabbit.mp3" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio><small>لإضافة تسجيلك: استبدلي الملف audio/tim-rabbit.mp3 بملفك الصوتي بنفس الاسم.</small></div>
-        </article>
-        <article class="story-card">
-          <div class="story-picture story-two">🌷 🦋 🌞</div><div class="story-info"><span class="story-tag">اكتشاف</span><h3>تيم في الحديقة</h3><p>تيم يتعلم أسماء الألوان من الطبيعة.</p><audio controls preload="none" id="audio2"><source src="audio/tim-garden.mp3" type="audio/mpeg">متصفحك لا يدعم تشغيل الصوت.</audio><small>استبدلي الملف audio/tim-garden.mp3 بتسجيلك للحكاية الثانية.</small></div>
-        </article>
-      </div>
-      <div class="recording-tip"><span>🎙️</span><div><b>إزاي تسجلي صوتك؟</b><p>استخدمي مسجل الصوت في الموبايل، واحفظي التسجيل بصيغة MP3. ضعي الملف داخل مجلد <code>audio</code> وسمّيه بالاسم المكتوب تحت القصة. لا ترفعي ملفات صوتية فارغة مكان التسجيل.</p></div></div>
-    </section>
+                <div class="folder-item">
+                    <div class="folder-icon">🍎</div>
+                    <div class="folder-name">Fruits</div>
+                    <div class="folder-desc">Apple • Banana</div>
+                </div>
 
-    <section class="parent-section" id="parents">
-      <div class="parent-icon">💛</div><div><span class="eyebrow">ركن الأهل</span><h2>كل يوم خطوة صغيرة</h2><p>خلي وقت التعلم قصيرًا وممتعًا، وكرري الأصوات مع الطفل، وامدحي المحاولة مش الإجابة بس. الموقع نموذج تعليمي بسيط وليس بديلًا عن متابعة الطفل واحتياجاته.</p></div>
-    </section>
-  </main>
+                <div class="folder-item">
+                    <div class="folder-icon">🎨</div>
+                    <div class="folder-name">Colors</div>
+                    <div class="folder-desc">Red • Blue • Yellow</div>
+                </div>
 
-  <footer><a class="brand footer-brand" href="#home"><span class="brand-star">★</span><span><b>عالم تيم</b><small>Tim's Little World</small></span></a><p>كل طفل يستحق بداية جميلة 💫</p><a href="#home" class="back-top">العودة للأعلى ↑</a></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+                <div class="folder-item">
+                    <div class="folder-icon">🔢</div>
+                    <div class="folder-name">Numbers</div>
+                    <div class="folder-desc">One • Two • Three</div>
+                </div>
+
+                <div class="folder-item">
+                    <div class="folder-icon">🧩</div>
+                    <div class="folder-name">Games</div>
+                    <div class="folder-desc">Learn and Play</div>
+                </div>
+
+                <div class="folder-item">
+                    <div class="folder-icon">🚗</div>
+                    <div class="folder-name">Transportation</div>
+                    <div class="folder-desc">Car • Bus • Train</div>
+                </div>
+
+                <div class="folder-item">
+                    <div class="folder-icon">🔤</div>
+                    <div class="folder-name">English Letters</div>
+                    <div class="folder-desc">A • B • C</div>
+                </div>
+
+                <div class="folder-item">
+                    <div class="folder-icon">📚</div>
+                    <div class="folder-name">Stories</div>
+                    <div class="folder-desc">Little Bear Stories</div>
+                </div>
+
+                <div class="folder-item">
+                    <div class="folder-icon">🔺</div>
+                    <div class="folder-name">Shapes</div>
+                    <div class="folder-desc">Circle • Square</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animals Exploration Section -->
+        <section style="margin-top: 50px;">
+            <h2 class="section-title">Explore Our Animals 🐾</h2>
+            <div class="animals-grid">
+                <div class="animal-card" style="background-color: var(--soft-beige);">
+                    <div style="font-size: 2.5rem;">🐻🐮</div>
+                    <h3 class="folder-name">Animals</h3>
+                    <p class="folder-desc">Meet our friends</p>
+                </div>
+                <div class="animal-card" style="background-color: var(--soft-green);">
+                    <div style="font-size: 2.5rem;">🐄🐥</div>
+                    <h3 class="folder-name">Farm Animals</h3>
+                    <p class="folder-desc">On the farm</p>
+                </div>
+                <div class="animal-card" style="background-color: var(--soft-yellow);">
+                    <div style="font-size: 2.5rem;">🦁🐘</div>
+                    <h3 class="folder-name">Wild Animals</h3>
+                    <p class="folder-desc">Explore jungle</p>
+                </div>
+                <div class="animal-card" style="background-color: var(--soft-pink);">
+                    <div style="font-size: 2.5rem;">🐶🐱</div>
+                    <h3 class="folder-name">Pets</h3>
+                    <p class="folder-desc">Our furry friends</p>
+                </div>
+                <div class="animal-card" style="background-color: var(--soft-blue);">
+                    <div style="font-size: 2.5rem;">🐬🐢</div>
+                    <h3 class="folder-name">Sea Animals</h3>
+                    <p class="folder-desc">Discover ocean</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KG Skills Section -->
+        <section style="margin-top: 50px;">
+            <h2 class="section-title">KG Skills ✏️</h2>
+            <div class="skills-grid">
+                <!-- Directions -->
+                <div class="skill-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🐻⬆️</div>
+                    <h3 class="card-title">Directions / الاتجاهات</h3>
+                    <p class="card-sub" dir="ltr">Up • Down • Right • Left</p>
+                    <p class="card-sub">فوق • تحت • يمين • شمال</p>
+                </div>
+
+                <!-- Writing Skills -->
+                <div class="skill-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">✏️〰️</div>
+                    <h3 class="card-title">Handwriting & Tracing</h3>
+                    <p class="card-sub" dir="ltr">Straight • Curved • Shapes</p>
+                    <p class="card-sub">خطوط مستقيمة • منحنية • تتبع الأشكال</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Little Steps • Big Dreams 💫</p>
+        <p style="margin-top: 5px;">Tim's Little World</p>
+    </footer>
+
 </body>
 </html>
