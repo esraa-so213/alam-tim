@@ -1,357 +1,388 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<meta name="theme-color" content="#FAF7F2">  
-<title>Tim's Little World – My First Words</title>  
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">  
-<style>  
-:root{  
-  --bg:#FAF7F2;--white:#fff;--cream:#FFF9F1;  
-  --blue:#D0E8F2;--blue2:#EFF8FC;--beige:#F5EBE0;  
-  --pink:#F8E5E2;--green:#E7F2E5;--brown:#5C4A3E;  
-  --muted:#8C7A6B;--orange:#E89D61;--line:#EADCCB;  
-}  
-*{box-sizing:border-box;margin:0;padding:0}  
-body{font-family:'Fredoka','Tajawal',sans-serif;background:var(--bg);color:var(--brown);overflow-x:hidden}  
-button{font:inherit;color:inherit;cursor:pointer}  
-header{text-align:center;padding:26px 15px 30px;background:linear-gradient(#C9E7F5,#E8F5FC 75%,var(--bg));border-radius:0 0 34px 34px}  
-.header-title{font-size:clamp(1.8rem,7vw,2.7rem);font-weight:700}  
-.header-subtitle{color:var(--muted);margin-top:5px}  
-.hero{font-size:2.7rem;margin-top:10px}  
-.container{width:min(960px,100%);margin:auto;padding:16px}  
-.section-title{text-align:center;font-size:1.45rem;margin:20px 0 12px}  
-.intro{text-align:center;color:var(--muted);line-height:1.7;margin:8px 0 18px}  
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}  
-.card{min-width:0;width:100%;border:2px solid var(--line);background:white;border-radius:28px;padding:15px 9px;text-align:center;box-shadow:0 6px 15px #5C4A3E0A;transition:transform .15s}  
-.card:active{transform:scale(.97)}  
-.blue{background:var(--blue2);border-color:#D7EAF2}  
-.beige{background:#FFFAF4}  
-.pink{background:#FFF6F4;border-color:#F3DEDA}  
-.green{background:#F5FAF3;border-color:#DCEBD9}  
-.mascot{font-size:2.8rem;min-height:67px;display:flex;align-items:center;justify-content:center;gap:5px}  
-.card-title{font-weight:700;font-size:1rem;overflow-wrap:anywhere;margin:7px 0}  
-.card-sub,.folder-desc{color:var(--muted);font-size:.82rem;line-height:1.5}  
-.pill{display:inline-block;background:var(--beige);border-radius:20px;padding:7px 12px;font-size:.8rem;margin-top:10px;font-weight:600}  
-.cloud-card{border-radius:42% 42% 25px 25px / 20% 20% 25px 25px;padding-top:20px;background:var(--cream)}  
-.cloud-card.blue{background:var(--blue2)}  
-.folder-icon{font-size:2.4rem;min-height:55px;display:flex;align-items:center;justify-content:center}  
-.divider{border:0;border-top:2px dashed var(--line);margin:25px 0}  
-.hidden{display:none!important}  
-.topbar{display:flex;align-items:center;gap:10px;margin:8px 0 15px}  
-.topbar h2{font-size:1.2rem;line-height:1.4}  
-.back-btn,.small-btn{border:0;border-radius:18px;background:var(--blue);padding:10px 14px;font-weight:700;flex-shrink:0}  
-.activity{background:white;border:2px dashed var(--orange);border-radius:26px;padding:18px 12px;text-align:center;margin:14px 0}  
-.activity-picture{font-size:4rem;margin:10px}  
-.activity-title{font-size:1.3rem;margin:10px 0}  
-.activity-text{color:var(--muted);line-height:1.8}  
-.word-card{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center}  
-.word-picture{font-size:3.3rem;min-height:70px;display:flex;align-items:center;justify-content:center}  
-.word-label{font-weight:700;font-size:1.08rem;margin:8px 0}  
-.sound-btn{border:0;background:var(--blue);border-radius:20px;padding:7px 12px;margin-top:5px}  
-.action-btn{border:0;border-radius:18px;padding:11px 16px;background:var(--orange);color:white;font-weight:700;margin:5px}  
-.action-btn:disabled{opacity:.4}  
-.controls{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}  
-.practice-box{background:white;border-radius:26px;padding:16px 10px;text-align:center}  
-#traceCanvas,#drawCanvas{display:block;width:100%;max-width:500px;height:210px;margin:14px auto;background:#FFFEFC;border:2px solid #E6F0F3;border-radius:20px;touch-action:none}  
-#drawCanvas{height:280px}  
-.palette{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:12px}  
-.color-dot{width:36px;height:36px;border:2px solid #ddd;border-radius:50%}  
-.story{background:white;border-radius:25px;padding:18px;margin:14px 0;text-align:center;border:2px solid var(--line)}  
-.story p{line-height:1.9;color:var(--muted);margin:10px 0}  
-.choice{font-size:2.7rem;min-height:110px}  
-.feedback{min-height:35px;margin:10px;color:#547E58;font-weight:700}  
-footer{text-align:center;color:var(--muted);padding:25px 10px;font-size:.85rem}  
-[dir=rtl]{font-family:'Tajawal','Fredoka',sans-serif}  
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.main-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-folders{grid-template-columns:repeat(4,minmax(0,1fr))}}  
-@media(max-width:360px){.container{padding:11px}.grid{gap:9px}.card{padding:12px 6px}.card-title{font-size:.91rem}}  
-</style>  
-</head>  
-<body>  
-<header>  
-  <h1 class="header-title">Tim's Little World</h1>  
-  <p class="header-subtitle">My First Words</p>  
-  <div class="hero">☁️ 🧸 ☁️</div>  
-</header>  <main class="container">  
-<section id="home">  
-  <h2 class="section-title">Choose Your World ✨</h2>  
-  <p class="intro">Little steps • Big discoveries</p>  
-  <div class="grid main-grid">  
-    <button class="card beige" onclick="openPage('arabic')">  
-      <div class="mascot">🧸🎨</div><div class="card-title">عالمي العربي</div>  
-      <div class="card-sub">كلماتنا الأولى</div><span class="pill">هيا نكتشف ←</span>  
-    </button>  
-    <button class="card blue" onclick="openPage('english')">  
-      <div class="mascot">🐻☁️</div><div class="card-title">English World</div>  
-      <div class="card-sub">My First English Words</div><span class="pill">Let's Explore! →</span>  
-    </button>  
-  </div>  
-  <hr class="divider">  
-  <h2 class="section-title">Let's Play & Learn ☁️</h2>  
-  <p class="intro">Choose an activity with Tim!</p>  
-  <div class="grid home-folders">  
-    <button class="card cloud-card blue" onclick="openPage('games')"><div class="mascot">🧸🧩</div><div class="card-title">Games</div><div class="folder-desc">Learn and play</div></button>  
-    <button class="card cloud-card" onclick="openPage('stories')"><div class="mascot">🐻📚</div><div class="card-title">Stories</div><div class="folder-desc">Little bear stories</div></button>  
-    <button class="card cloud-card blue" onclick="openPage('worship')"><div class="mascot">🤲🌙</div><div class="card-title">العبادات</div><div class="folder-desc">خطوات صغيرة جميلة</div></button>  
-    <button class="card cloud-card" onclick="openPage('routines')"><div class="mascot">🪥🛁</div><div class="card-title">Daily Routines</div><div class="folder-desc">عاداتنا اليومية</div></button>  
-    <button class="card cloud-card blue" onclick="openPage('writing')"><div class="mascot">🧸✏️</div><div class="card-title">Writing Skills</div><div class="folder-desc">Trace and practice</div></button>  
-    <button class="card cloud-card" onclick="openPage('montessori')"><div class="mascot">🧺🧸</div><div class="card-title">Montessori</div><div class="folder-desc">Learn by doing</div></button>  
-    <button class="card cloud-card blue" onclick="openPage('drawing')"><div class="mascot">🎨🖍️</div><div class="card-title">Drawing & Coloring</div><div class="folder-desc">Create with colors</div></button>  
-    <button class="card cloud-card" onclick="openPage('extras')"><div class="mascot">🌟☁️</div><div class="card-title">Extra Activities</div><div class="folder-desc">Discover more</div></button>  
-  </div>  
-</section>  <section id="english" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>English World 🇬🇧</h2></div>  
-  <p class="intro">Let's discover new words together!</p>  
-  <div class="grid" id="englishFolders"></div>  
-</section>  <section id="arabic" class="hidden" dir="rtl">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">العودة ←</button><h2>عالمي العربي 🧸</h2></div>  
-  <p class="intro">هيا نتعلم ونكتشف مع تيم!</p>  
-  <div class="grid" id="arabicFolders"></div>  
-</section>  <section id="content" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Back</button><h2 id="contentTitle">Let's Learn!</h2></div>  
-  <p class="intro" id="contentIntro"></p>  
-  <div class="grid" id="contentGrid"></div>  
-</section>  <section id="games" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Games 🧩</h2></div>  
-  <p class="intro">Find the picture that matches the word!</p>  
-  <div class="activity">  
-    <div id="gameQuestion" class="activity-title">Find the cat 🐱</div>  
-    <div class="grid" id="gameChoices"></div>  
-    <div id="gameFeedback" class="feedback" aria-live="polite"></div>  
-    <button class="action-btn" onclick="newGame()">Next Game →</button>  
-  </div>  
-</section>  <section id="stories" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Little Stories 📚</h2></div>  
-  <article class="story"><div class="activity-picture">🐻🧸</div><h3>Tim and the Little Bear</h3><p>One sunny day, Tim met a little bear. They played together and shared their toys. Tim learned that sharing can make playtime happier!</p><button class="action-btn" onclick="speak('One sunny day, Tim met a little bear. They played together and shared their toys.')">🔊 Listen</button></article>  
-  <article class="story"><div class="activity-picture">🐰🥕</div><h3>The Hungry Rabbit</h3><p>A little rabbit found a carrot. He washed it and shared it with his friend. They enjoyed a happy snack together!</p><button class="action-btn" onclick="speak('A little rabbit found a carrot. He washed it and shared it with his friend.')">🔊 Listen</button></article>  
-  <article class="story" dir="rtl"><div class="activity-picture">🧸🧺</div><h3>تيم والدب الصغير</h3><p>لعب تيم مع دبه الصغير. وبعد اللعب، جمع ألعابه ووضعها في السلة. أحس تيم بالسعادة لأن غرفته أصبحت مرتبة!</p><button class="action-btn" onclick="speak('لعب تيم مع دبه الصغير. وبعد اللعب جمع ألعابه ووضعها في السلة.')">🔊 استمعي للقصة</button></article>  
-</section>  <section id="worship" class="hidden" dir="rtl">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">العودة ←</button><h2>نتعلم العبادات 🤲</h2></div>  
-  <p class="intro">نتعلم بهدوء ومع مساعدة ماما.</p>  
-  <div class="grid" id="worshipGrid"></div>  
-</section>  <section id="routines" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Daily Routines ☀️</h2></div>  
-  <p class="intro">Little habits make our day lovely.</p>  
-  <div class="grid" id="routineGrid"></div>  
-</section>  <section id="writing" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Writing Skills ✏️</h2></div>  
-  <p class="intro">Trace the paths with your finger. A grown-up can help!</p>  
-  <div class="practice-box">  
-    <div class="activity-picture" id="traceEmoji">🧸✏️</div>  
-    <h3 class="activity-title" id="traceTitle">Straight Lines</h3>  
-    <p class="activity-text" id="traceDesc">Follow the dotted path.</p>  
-    <canvas id="traceCanvas" aria-label="Tracing practice canvas"></canvas>  
-    <div class="controls"><button class="action-btn" onclick="clearTrace()">🧽 Clear</button><button class="action-btn" id="prevTrace" onclick="changeTrace(-1)">← Back</button><span id="traceCount">1 / 8</span><button class="action-btn" id="nextTrace" onclick="changeTrace(1)">Next →</button></div>  
-  </div>  
-</section>  <section id="drawing" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Drawing & Coloring 🎨</h2></div>  
-  <p class="intro">Choose a color and draw anything you like.</p>  
-  <div class="practice-box"><div class="activity-picture">🖍️🌈</div>  
-    <div class="palette" id="palette"></div>  
-    <canvas id="drawCanvas" aria-label="Drawing area"></canvas>  
-    <button class="action-btn" onclick="clearArt()">Clear drawing</button>  
-  </div>  
-</section>  <section id="montessori" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Montessori Activities 🧺</h2></div>  
-  <p class="intro">Simple activities with a grown-up nearby. Always supervise little children.</p>  
-  <div class="grid" id="montessoriGrid"></div>  
-</section>  <section id="extras" class="hidden">  
-  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Extra Activities 🌟</h2></div>  
-  <div class="grid" id="extrasGrid"></div>  
-</section>  
-</main>  <footer><p>Little Steps • Big Dreams 💫</p><p style="margin-top:6px">Tim's Little World</p></footer>  <script>  
-const pages=['home','english','arabic','content','games','stories','worship','routines','writing','drawing','montessori','extras'];  
-let historyStack=['home'];  
-const $=id=>document.getElementById(id);  
-  
-const categories=[  
- {id:'animals',en:'Animals',ar:'الحيوانات',icon:'🐻',items:[['🐮','Cow','بقرة'],['🐴','Horse','حصان'],['🐑','Sheep','خروف'],['🐐','Goat','ماعز'],['🐔','Chicken','دجاجة'],['🦆','Duck','بطة'],['🐶','Dog','كلب'],['🐱','Cat','قطة'],['🐰','Rabbit','أرنب'],['🦁','Lion','أسد'],['🐘','Elephant','فيل'],['🐒','Monkey','قرد'],['🦒','Giraffe','زرافة'],['🦊','Fox','ثعلب'],['🐬','Dolphin','دلفين'],['🐟','Fish','سمكة'],['🐢','Turtle','سلحفاة'],['🐙','Octopus','أخطبوط'],['🦉','Owl','بومة'],['🦜','Parrot','ببغاء']]},  
- {id:'fruits',en:'Fruits',ar:'الفواكه',icon:'🍎',items:[['🍎','Apple','تفاحة'],['🍌','Banana','موز'],['🍓','Strawberry','فراولة'],['🍊','Orange','برتقال'],['🍇','Grapes','عنب'],['🍉','Watermelon','بطيخ']]},  
- {id:'vegetables',en:'Vegetables',ar:'الخضروات',icon:'🥕',items:[['🥕','Carrot','جزر'],['🍅','Tomato','طماطم'],['🥒','Cucumber','خيار'],['🥔','Potato','بطاطس'],['🥦','Broccoli','بروكلي']]},  
- {id:'transport',en:'Transportation',ar:'المواصلات',icon:'🚌',items:[['🚗','Car','سيارة'],['🚌','Bus','أتوبيس'],['🚂','Train','قطار'],['✈️','Airplane','طائرة'],['🚲','Bicycle','دراجة'],['🚢','Ship','سفينة']]},  
- {id:'body',en:'Body Parts',ar:'أجزاء الجسم',icon:'👀',items:[['🙂','Head','رأس'],['👀','Eyes','عيون'],['👂','Ears','أذن'],['👃','Nose','أنف'],['👄','Mouth','فم'],['✋','Hand','يد'],['💪','Arm','ذراع'],['🦶','Foot','قدم'],['🦵','Knee','ركبة']]},  
- {id:'colors',en:'Colors',ar:'الألوان',icon:'🎨',items:[['🔴','Red','أحمر'],['🟡','Yellow','أصفر'],['🟢','Green','أخضر'],['🔵','Blue','أزرق'],['⚪','White','أبيض'],['⚫','Black','أسود'],['🟤','Brown','بني'],['🟣','Purple','بنفسجي']]},  
- {id:'numbers',en:'Numbers 1–10',ar:'الأرقام ١–١٠',icon:'🔢',items:[['1️⃣','One','واحد'],['2️⃣','Two','اثنان'],['3️⃣','Three','ثلاثة'],['4️⃣','Four','أربعة'],['5️⃣','Five','خمسة'],['6️⃣','Six','ستة'],['7️⃣','Seven','سبعة'],['8️⃣','Eight','ثمانية'],['9️⃣','Nine','تسعة'],['🔟','Ten','عشرة']]},  
- {id:'shapes',en:'Shapes',ar:'الأشكال',icon:'🔺',items:[['⚪','Circle','دائرة'],['🟥','Square','مربع'],['🔺','Triangle','مثلث'],['⭐','Star','نجمة'],['❤️','Heart','قلب'],['▰','Rectangle','مستطيل']]},  
- {id:'family',en:'My Family',ar:'عيلتي الجميلة',icon:'👨‍👩‍👦',items:[['👩','Mama','ماما'],['👨','Daddy','بابا'],['👵','Grandma','تيتا'],['👴','Grandpa','جدو']]},  
- {id:'feelings',en:'Feelings & Actions',ar:'المشاعر والأفعال',icon:'😊',items:[['😊','Happy','سعيد'],['😢','Sad','حزين'],['😂','Laughing','يضحك'],['😭','Crying','يبكي'],['🍽️','Eating','يأكل'],['🥤','Drinking','يشرب'],['🏃','Running','يجري'],['🤸','Jumping','يقفز'],['🎨','Drawing','يرسم'],['🚶','Walking','يمشي']]},  
- {id:'directions',en:'Directions',ar:'الاتجاهات',icon:'⬆️',items:[['⬆️','Up','فوق'],['⬇️','Down','تحت'],['⬅️','Left','يسار'],['➡️','Right','يمين'],['📥','In','داخل'],['📤','Out','خارج']]}  
-];  
-  
-function openPage(id){  
- if(!$(id))return;  
- document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));  
- $(id).classList.remove('hidden');  
- if(historyStack[historyStack.length-1]!==id)historyStack.push(id);  
- window.scrollTo({top:0,behavior:'smooth'});  
-}  
-function goBack(){  
- if(historyStack.length>1)historyStack.pop();  
- const id=historyStack[historyStack.length-1]||'home';  
- document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));  
- $(id).classList.remove('hidden');  
- window.scrollTo({top:0,behavior:'smooth'});  
-}  
-function speak(text,lang){  
- if(!('speechSynthesis' in window)){alert('Audio is not available in this browser.');return}  
- speechSynthesis.cancel();  
- const u=new SpeechSynthesisUtterance(text);  
- u.lang=lang||((/[\u0600-\u06FF]/.test(text))?'ar-EG':'en-US');  
- u.rate=.8;speechSynthesis.speak(u);  
-}  
-function folderCard(icon,title,sub,fn,blue=false){  
- const b=document.createElement('button');b.className='card cloud-card '+(blue?'blue':'');  
- const i=document.createElement('div');i.className='folder-icon';i.textContent=icon;  
- const t=document.createElement('div');t.className='card-title';t.textContent=title;  
- const d=document.createElement('div');d.className='folder-desc';d.textContent=sub||'Explore together';  
- b.append(i,t,d);b.onclick=fn;return b;  
-}  
-function buildFolders(){  
- categories.forEach((c,i)=>{  
-  $('englishFolders').append(folderCard(c.icon,c.en,'Discover new words',()=>showWords(c,'en'),i%2===0));  
-  $('arabicFolders').append(folderCard(c.icon,c.ar,'هيا نكتشف الكلمات',()=>showWords(c,'ar'),i%2===1));  
- });  
-}  
-function showWords(cat,lang){  
- $('contentTitle').textContent=lang==='ar'?cat.ar:cat.en;  
- $('contentIntro').textContent=lang==='ar'?'اضغطي على الكلمة للاستماع إليها.':'Tap a card to hear the word.';  
- $('contentGrid').innerHTML='';  
- $('contentGrid').dir=lang==='ar'?'rtl':'ltr';  
- cat.items.forEach((it,i)=>{  
-  const b=document.createElement('button');b.className='card word-card '+(i%2?'blue':'');  
-  const pic=document.createElement('div');pic.className='word-picture';pic.textContent=it[0];  
-  const label=document.createElement('div');label.className='word-label';label.textContent=lang==='ar'?it[2]:it[1];  
-  const snd=document.createElement('span');snd.className='sound-btn';snd.textContent='🔊 '+(lang==='ar'?'اسمع':'Listen');  
-  b.append(pic,label,snd);b.onclick=()=>speak(lang==='ar'?it[2]:it[1],lang==='ar'?'ar-EG':'en-US');  
-  $('contentGrid').append(b);  
- });  
- openPage('content');  
-}  
-function simpleCards(id,items,rtl=false){  
- const grid=$(id);grid.innerHTML='';grid.dir=rtl?'rtl':'ltr';  
- items.forEach((it,i)=>grid.append(folderCard(it[0],it[1],it[2],()=>showActivity(it[1],it[0],it[2],rtl?'ar-EG':'en-US'),i%2===0)));  
-}  
-function showActivity(title,picture,description,lang){  
- $('contentTitle').textContent=title;  
- $('contentIntro').textContent=description;  
- $('contentGrid').innerHTML='';  
- const b=document.createElement('button');b.className='card';b.style.gridColumn='1/-1';  
- const p=document.createElement('div');p.className='activity-picture';p.textContent=picture;  
- const t=document.createElement('div');t.className='card-title';t.textContent=title;  
- const s=document.createElement('button');s.className='action-btn';s.textContent='🔊 '+(lang==='ar-EG'?'استمع':'Listen');  
- s.onclick=e=>{e.stopPropagation();speak(title,lang)};  
- b.append(p,t,s);$('contentGrid').append(b);openPage('content');  
-}  
-simpleCards('worshipGrid',[  
- ['🧼','الوضوء','نتعلم خطوات الوضوء مع ماما.'],  
- ['🕌','الصلاة','نقف بهدوء مع ماما ونتعلم الصلاة.'],  
- ['🍽️','بسم الله','نقول بسم الله قبل الطعام.'],  
- ['💚','الحمد لله','نقول الحمد لله بعد الطعام.']  
-],true);  
-simpleCards('routineGrid',[  
- ['🌞','Wake Up','I wake up in the morning.'],  
- ['🪥','Brush Teeth','I brush my teeth.'],  
- ['🧼','Wash Face','I wash my face.'],  
- ['🥣','Eat Breakfast','I eat my breakfast.'],  
- ['🧸','Tidy Toys','I put my toys away.'],  
- ['👨‍👩‍👦','Help My Family','I help my family.']  
-]);  
-simpleCards('montessoriGrid',[  
- ['🥄','Spoon Transfer','With an adult, move large soft items between bowls.'],  
- ['🧦','Match Socks','Find two socks that look alike.'],  
- ['🧺','Fold a Cloth','Fold a small cloth with an adult.'],  
- ['🟡','Sort Colors','Group large objects by color with supervision.'],  
- ['🧱','Build Blocks','Stack large blocks on the floor.'],  
- ['🧩','Match Pictures','Match two familiar picture cards.']  
-]);  
-simpleCards('extrasGrid',[  
- ['👋','Hello & Goodbye','Practice friendly greetings.'],  
- ['🎵','Action Time','Clap, wave, and move together.'],  
- ['👀','Find and Point','Point to familiar things around you.'],  
- ['❤️','Kind Hands','Practice gentle hands and sharing.']  
-]);  
-function buildLetters(){  
- const items=[['A a','Letter A'],['B b','Letter B'],['C c','Letter C'],['D d','Letter D'],['E e','Letter E'],['F f','Letter F']];  
- const c={en:'Letters',ar:'الحروف',items:items.map(x=>[x[0],x[1],x[1]])};  
- const b=folderCard('🔤','Letters','A • B • C',()=>showWords(c,'en'));  
- $('englishFolders').append(b);  
-}  
-buildFolders();  
-buildLetters();  
-  
-/* Eight tracing paths */  
-const slides=[  
- ['Straight Lines','🧸✏️','Follow the straight dotted path.',[[25,105],[475,105]]],  
- ['Vertical Lines','🐻⬇️','Move from top to bottom.',[[250,20],[250,190]]],  
- ['Horizontal Lines','🚗✏️','Move from left to right.',[[25,105],[475,105]]],  
- ['Curved Lines','🐍✏️','Follow the gentle curve.',[[25,150],[100,30],[180,140],[260,35],[340,140],[475,65]]],  
- ['Wavy Lines','🌊✏️','Follow the waves slowly.',[[25,100],[80,45],[135,155],[190,45],[245,155],[300,45],[355,155],[420,50],[475,100]]],  
- ['Zigzag Lines','⛰️✏️','Follow the zigzag path.',[[25,160],[100,35],[175,160],[250,35],[325,160],[400,35],[475,160]]],  
- ['Circles','🔵✏️','Trace around the circle.', 'circle'],  
- ['Pencil Control','🐻✏️','Follow the path carefully.',[[25,150],[90,40],[155,120],[220,65],[285,155],[350,45],[415,110],[475,50]]]  
-];  
-let slide=0,traceCtx,traceDrawing=false,traceLast=null,traceScale=1;  
-function drawTraceGuide(){  
- const c=$('traceCanvas'),r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;  
- c.width=r.width*dpr;c.height=r.height*dpr;  
- traceCtx=c.getContext('2d');traceCtx.setTransform(dpr,0,0,dpr,0,0);  
- traceScale=r.width/500;  
- traceCtx.clearRect(0,0,r.width,r.height);  
- traceCtx.save();traceCtx.scale(traceScale,traceScale);  
- traceCtx.strokeStyle='#B7DCEC';traceCtx.lineWidth=6;traceCtx.setLineDash([5,9]);traceCtx.lineCap='round';  
- if(slides[slide][3]==='circle'){  
-  traceCtx.beginPath();traceCtx.arc(250,105,65,0,Math.PI*2);traceCtx.stroke();  
- }else{  
-  const pts=slides[slide][3];traceCtx.beginPath();traceCtx.moveTo(...pts[0]);pts.slice(1).forEach(p=>traceCtx.lineTo(...p));traceCtx.stroke();  
- }  
- traceCtx.setLineDash([]);traceCtx.fillStyle='#E89D61';traceCtx.beginPath();traceCtx.arc(25,slides[slide][3]==='circle'?105:slides[slide][3][0][1],7,0,Math.PI*2);traceCtx.fill();  
- traceCtx.restore();  
-}  
-function renderTrace(){  
- $('traceTitle').textContent=slides[slide][0];$('traceEmoji').textContent=slides[slide][1];$('traceDesc').textContent=slides[slide][2];  
- $('traceCount').textContent=(slide+1)+' / '+slides.length;  
- $('prevTrace').disabled=slide===0;$('nextTrace').disabled=slide===slides.length-1;  
- drawTraceGuide();  
-}  
-function changeTrace(n){slide=Math.max(0,Math.min(slides.length-1,slide+n));renderTrace()}  
-function clearTrace(){drawTraceGuide()}  
-function canvasPoint(canvas,e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}  
-const tc=$('traceCanvas');tc.style.touchAction='none';  
-tc.addEventListener('pointerdown',e=>{traceDrawing=true;traceLast=canvasPoint(tc,e);tc.setPointerCapture(e.pointerId)});  
-tc.addEventListener('pointermove',e=>{if(!traceDrawing||!traceLast)return;const p=canvasPoint(tc,e);traceCtx.beginPath();traceCtx.moveTo(traceLast.x,traceLast.y);traceCtx.lineTo(p.x,p.y);traceCtx.strokeStyle='#E89D61';traceCtx.lineWidth=5;traceCtx.lineCap='round';traceCtx.stroke();traceLast=p});  
-['pointerup','pointercancel'].forEach(ev=>tc.addEventListener(ev,()=>{traceDrawing=false;traceLast=null}));  
-window.addEventListener('resize',()=>{if(!$('writing').classList.contains('hidden'))drawTraceGuide();if(!$('drawing').classList.contains('hidden'))resizeArt()});  
-$('writing').addEventListener('transitionend',()=>{});  
-const art=$('drawCanvas');let artCtx,artColor='#E89D61',artDrawing=false,artLast=null;  
-function resizeArt(){  
- const r=art.getBoundingClientRect(),dpr=window.devicePixelRatio||1;  
- let old=null;try{old=art.toDataURL()}catch(e){}  
- art.width=r.width*dpr;art.height=r.height*dpr;artCtx=art.getContext('2d');artCtx.setTransform(dpr,0,0,dpr,0,0);artCtx.lineCap='round';artCtx.lineJoin='round';  
-}  
-function clearArt(){if(!artCtx)resizeArt();artCtx.clearRect(0,0,art.width,art.height)}  
-art.style.touchAction='none';  
-art.addEventListener('pointerdown',e=>{artDrawing=true;artLast=canvasPoint(art,e);art.setPointerCapture(e.pointerId)});  
-art.addEventListener('pointermove',e=>{if(!artDrawing||!artLast)return;const p=canvasPoint(art,e);artCtx.beginPath();artCtx.moveTo(artLast.x,artLast.y);artCtx.lineTo(p.x,p.y);artCtx.strokeStyle=artColor;artCtx.lineWidth=6;artCtx.stroke();artLast=p});  
-['pointerup','pointercancel'].forEach(ev=>art.addEventListener(ev,()=>{artDrawing=false;artLast=null}));  
-['#E85D5D','#F4C542','#71B77A','#5BA9D5','#9B7AC9','#5C4A3E','#E89D61','#222222'].forEach(col=>{  
- const b=document.createElement('button');b.className='color-dot';b.style.background=col;b.setAttribute('aria-label','Choose drawing color');b.onclick=()=>artColor=col;$('palette').append(b);  
-});  
-let gameAnswer;  
-const gameItems=[['🐱','cat'],['🐶','dog'],['🍎','apple'],['🍌','banana'],['🚗','car'],['🐟','fish'],['🐮','cow'],['🥕','carrot'],['🚌','bus'],['🦁','lion']];  
-function newGame(){  
- const shuffled=[...gameItems].sort(()=>Math.random()-.5);  
- gameAnswer=shuffled[0];const choices=[gameAnswer,...shuffled.slice(1,3)].sort(()=>Math.random()-.5);  
- $('gameQuestion').textContent='Find the '+gameAnswer[1]+'!';  
- $('gameFeedback').textContent='';$('gameChoices').innerHTML='';  
- choices.forEach(it=>{  
-  const b=document.createElement('button');b.className='card blue';const p=document.createElement('div');p.className='choice';p.textContent=it[0];  
-  const t=document.createElement('div');t.className='card-title';t.textContent='?';  
-  b.append(p,t);b.onclick=()=>{if(it===gameAnswer){$('gameFeedback').textContent='Wonderful! ⭐';t.textContent=it[1];speak(it[1])}else{$('gameFeedback').textContent='Try again! You can do it 💛'}};  
-  $('gameChoices').append(b);  
- });  
-}  
-newGame();  
-const originalOpen=openPage;  
-openPage=function(id){originalOpen(id);if(id==='writing')setTimeout(renderTrace,80);if(id==='drawing')setTimeout(resizeArt,80);if(id==='games')newGame()};  
-</script>  </body>  
-</html>  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FAF7F2">
+<title>Tim's Little World – My First Words</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF7F2;--white:#fff;--cream:#FFF9F1;
+  --blue:#D0E8F2;--blue2:#EFF8FC;--beige:#F5EBE0;
+  --pink:#F8E5E2;--green:#E7F2E5;--brown:#5C4A3E;
+  --muted:#8C7A6B;--orange:#E89D61;--line:#EADCCB;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Fredoka','Tajawal',sans-serif;background:var(--bg);color:var(--brown);overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+header{text-align:center;padding:26px 15px 30px;background:linear-gradient(#C9E7F5,#E8F5FC 75%,var(--bg));border-radius:0 0 34px 34px}
+.header-title{font-size:clamp(1.8rem,7vw,2.7rem);font-weight:700}
+.header-subtitle{color:var(--muted);margin-top:5px}
+.hero{font-size:2.7rem;margin-top:10px}
+.container{width:min(960px,100%);margin:auto;padding:16px}
+.section-title{text-align:center;font-size:1.45rem;margin:20px 0 12px}
+.intro{text-align:center;color:var(--muted);line-height:1.7;margin:8px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{min-width:0;width:100%;border:2px solid var(--line);background:white;border-radius:28px;padding:15px 9px;text-align:center;box-shadow:0 6px 15px #5C4A3E0A;transition:transform .15s}
+.card:active{transform:scale(.97)}
+.blue{background:var(--blue2);border-color:#D7EAF2}
+.beige{background:#FFFAF4}
+.pink{background:#FFF6F4;border-color:#F3DEDA}
+.green{background:#F5FAF3;border-color:#DCEBD9}
+.mascot{font-size:2.8rem;min-height:67px;display:flex;align-items:center;justify-content:center;gap:5px}
+.card-title{font-weight:700;font-size:1rem;overflow-wrap:anywhere;margin:7px 0}
+.card-sub,.folder-desc{color:var(--muted);font-size:.82rem;line-height:1.5}
+.pill{display:inline-block;background:var(--beige);border-radius:20px;padding:7px 12px;font-size:.8rem;margin-top:10px;font-weight:600}
+.cloud-card{border-radius:42% 42% 25px 25px / 20% 20% 25px 25px;padding-top:20px;background:var(--cream)}
+.cloud-card.blue{background:var(--blue2)}
+.folder-icon{font-size:2.4rem;min-height:55px;display:flex;align-items:center;justify-content:center}
+.divider{border:0;border-top:2px dashed var(--line);margin:25px 0}
+.hidden{display:none!important}
+.topbar{display:flex;align-items:center;gap:10px;margin:8px 0 15px}
+.topbar h2{font-size:1.2rem;line-height:1.4}
+.back-btn,.small-btn{border:0;border-radius:18px;background:var(--blue);padding:10px 14px;font-weight:700;flex-shrink:0}
+.activity{background:white;border:2px dashed var(--orange);border-radius:26px;padding:18px 12px;text-align:center;margin:14px 0}
+.activity-picture{font-size:4rem;margin:10px}
+.activity-title{font-size:1.3rem;margin:10px 0}
+.activity-text{color:var(--muted);line-height:1.8}
+.word-card{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.word-picture{font-size:3.3rem;min-height:70px;display:flex;align-items:center;justify-content:center}
+.word-label{font-weight:700;font-size:1.08rem;margin:8px 0}
+.sound-btn{border:0;background:var(--blue);border-radius:20px;padding:7px 12px;margin-top:5px}
+.action-btn{border:0;border-radius:18px;padding:11px 16px;background:var(--orange);color:white;font-weight:700;margin:5px}
+.action-btn:disabled{opacity:.4}
+.controls{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}
+.practice-box{background:white;border-radius:26px;padding:16px 10px;text-align:center}
+#traceCanvas,#drawCanvas{display:block;width:100%;max-width:500px;height:210px;margin:14px auto;background:#FFFEFC;border:2px solid #E6F0F3;border-radius:20px;touch-action:none}
+#drawCanvas{height:280px}
+.palette{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:12px}
+.color-dot{width:36px;height:36px;border:2px solid #ddd;border-radius:50%}
+.story{background:white;border-radius:25px;padding:18px;margin:14px 0;text-align:center;border:2px solid var(--line)}
+.story p{line-height:1.9;color:var(--muted);margin:10px 0}
+.choice{font-size:2.7rem;min-height:110px}
+.feedback{min-height:35px;margin:10px;color:#547E58;font-weight:700}
+footer{text-align:center;color:var(--muted);padding:25px 10px;font-size:.85rem}
+[dir=rtl]{font-family:'Tajawal','Fredoka',sans-serif}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.main-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-folders{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:360px){.container{padding:11px}.grid{gap:9px}.card{padding:12px 6px}.card-title{font-size:.91rem}}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="header-title">Tim's Little World</h1>
+  <p class="header-subtitle">My First Words</p>
+  <div class="hero">☁️ 🧸 ☁️</div>
+</header>
+
+<main class="container">
+<section id="home">
+  <h2 class="section-title">Choose Your World ✨</h2>
+  <p class="intro">Little steps • Big discoveries</p>
+  <div class="grid main-grid">
+    <button class="card beige" onclick="openPage('arabic')">
+      <div class="mascot">🧸🎨</div><div class="card-title">عالمي العربي</div>
+      <div class="card-sub">كلماتنا الأولى</div><span class="pill">هيا نكتشف ←</span>
+    </button>
+    <button class="card blue" onclick="openPage('english')">
+      <div class="mascot">🐻☁️</div><div class="card-title">English World</div>
+      <div class="card-sub">My First English Words</div><span class="pill">Let's Explore! →</span>
+    </button>
+  </div>
+  <hr class="divider">
+  <h2 class="section-title">Let's Play & Learn ☁️</h2>
+  <p class="intro">Choose an activity with Tim!</p>
+  <div class="grid home-folders">
+    <button class="card cloud-card blue" onclick="openPage('games')"><div class="mascot">🧸🧩</div><div class="card-title">Games</div><div class="folder-desc">Learn and play</div></button>
+    <button class="card cloud-card" onclick="openPage('stories')"><div class="mascot">🐻📚</div><div class="card-title">Stories</div><div class="folder-desc">Little bear stories</div></button>
+    <button class="card cloud-card blue" onclick="openPage('worship')"><div class="mascot">🤲🌙</div><div class="card-title">العبادات</div><div class="folder-desc">خطوات صغيرة جميلة</div></button>
+    <button class="card cloud-card" onclick="openPage('routines')"><div class="mascot">🪥🛁</div><div class="card-title">Daily Routines</div><div class="folder-desc">عاداتنا اليومية</div></button>
+    <button class="card cloud-card blue" onclick="openPage('writing')"><div class="mascot">🧸✏️</div><div class="card-title">Writing Skills</div><div class="folder-desc">Trace and practice</div></button>
+    <button class="card cloud-card" onclick="openPage('montessori')"><div class="mascot">🧺🧸</div><div class="card-title">Montessori</div><div class="folder-desc">Learn by doing</div></button>
+    <button class="card cloud-card blue" onclick="openPage('drawing')"><div class="mascot">🎨🖍️</div><div class="card-title">Drawing & Coloring</div><div class="folder-desc">Create with colors</div></button>
+    <button class="card cloud-card" onclick="openPage('extras')"><div class="mascot">🌟☁️</div><div class="card-title">Extra Activities</div><div class="folder-desc">Discover more</div></button>
+  </div>
+</section>
+
+<section id="english" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>English World 🇬🇧</h2></div>
+  <p class="intro">Let's discover new words together!</p>
+  <div class="grid" id="englishFolders"></div>
+</section>
+
+<section id="arabic" class="hidden" dir="rtl">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">العودة ←</button><h2>عالمي العربي 🧸</h2></div>
+  <p class="intro">هيا نتعلم ونكتشف مع تيم!</p>
+  <div class="grid" id="arabicFolders"></div>
+</section>
+
+<section id="content" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Back</button><h2 id="contentTitle">Let's Learn!</h2></div>
+  <p class="intro" id="contentIntro"></p>
+  <div class="grid" id="contentGrid"></div>
+</section>
+
+<section id="games" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Games 🧩</h2></div>
+  <p class="intro">Find the picture that matches the word!</p>
+  <div class="activity">
+    <div id="gameQuestion" class="activity-title">Find the cat 🐱</div>
+    <div class="grid" id="gameChoices"></div>
+    <div id="gameFeedback" class="feedback" aria-live="polite"></div>
+    <button class="action-btn" onclick="newGame()">Next Game →</button>
+  </div>
+</section>
+
+<section id="stories" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Little Stories 📚</h2></div>
+  <article class="story"><div class="activity-picture">🐻🧸</div><h3>Tim and the Little Bear</h3><p>One sunny day, Tim met a little bear. They played together and shared their toys. Tim learned that sharing can make playtime happier!</p><button class="action-btn" onclick="speak('One sunny day, Tim met a little bear. They played together and shared their toys.')">🔊 Listen</button></article>
+  <article class="story"><div class="activity-picture">🐰🥕</div><h3>The Hungry Rabbit</h3><p>A little rabbit found a carrot. He washed it and shared it with his friend. They enjoyed a happy snack together!</p><button class="action-btn" onclick="speak('A little rabbit found a carrot. He washed it and shared it with his friend.')">🔊 Listen</button></article>
+  <article class="story" dir="rtl"><div class="activity-picture">🧸🧺</div><h3>تيم والدب الصغير</h3><p>لعب تيم مع دبه الصغير. وبعد اللعب، جمع ألعابه ووضعها في السلة. أحس تيم بالسعادة لأن غرفته أصبحت مرتبة!</p><button class="action-btn" onclick="speak('لعب تيم مع دبه الصغير. وبعد اللعب جمع ألعابه ووضعها في السلة.')">🔊 استمعي للقصة</button></article>
+</section>
+
+<section id="worship" class="hidden" dir="rtl">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">العودة ←</button><h2>نتعلم العبادات 🤲</h2></div>
+  <p class="intro">نتعلم بهدوء ومع مساعدة ماما.</p>
+  <div class="grid" id="worshipGrid"></div>
+</section>
+
+<section id="routines" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Daily Routines ☀️</h2></div>
+  <p class="intro">Little habits make our day lovely.</p>
+  <div class="grid" id="routineGrid"></div>
+</section>
+
+<section id="writing" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Writing Skills ✏️</h2></div>
+  <p class="intro">Trace the paths with your finger. A grown-up can help!</p>
+  <div class="practice-box">
+    <div class="activity-picture" id="traceEmoji">🧸✏️</div>
+    <h3 class="activity-title" id="traceTitle">Straight Lines</h3>
+    <p class="activity-text" id="traceDesc">Follow the dotted path.</p>
+    <canvas id="traceCanvas" aria-label="Tracing practice canvas"></canvas>
+    <div class="controls"><button class="action-btn" onclick="clearTrace()">🧽 Clear</button><button class="action-btn" id="prevTrace" onclick="changeTrace(-1)">← Back</button><span id="traceCount">1 / 8</span><button class="action-btn" id="nextTrace" onclick="changeTrace(1)">Next →</button></div>
+  </div>
+</section>
+
+<section id="drawing" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Drawing & Coloring 🎨</h2></div>
+  <p class="intro">Choose a color and draw anything you like.</p>
+  <div class="practice-box"><div class="activity-picture">🖍️🌈</div>
+    <div class="palette" id="palette"></div>
+    <canvas id="drawCanvas" aria-label="Drawing area"></canvas>
+    <button class="action-btn" onclick="clearArt()">Clear drawing</button>
+  </div>
+</section>
+
+<section id="montessori" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Montessori Activities 🧺</h2></div>
+  <p class="intro">Simple activities with a grown-up nearby. Always supervise little children.</p>
+  <div class="grid" id="montessoriGrid"></div>
+</section>
+
+<section id="extras" class="hidden">
+  <div class="topbar"><button class="back-btn" onclick="goBack()">← Home</button><h2>Extra Activities 🌟</h2></div>
+  <div class="grid" id="extrasGrid"></div>
+</section>
+</main>
+
+<footer><p>Little Steps • Big Dreams 💫</p><p style="margin-top:6px">Tim's Little World</p></footer>
+
+<script>
+const pages=['home','english','arabic','content','games','stories','worship','routines','writing','drawing','montessori','extras'];
+let historyStack=['home'];
+const $=id=>document.getElementById(id);
+
+const categories=[
+ {id:'animals',en:'Animals',ar:'الحيوانات',icon:'🐻',items:[['🐮','Cow','بقرة'],['🐴','Horse','حصان'],['🐑','Sheep','خروف'],['🐐','Goat','ماعز'],['🐔','Chicken','دجاجة'],['🦆','Duck','بطة'],['🐶','Dog','كلب'],['🐱','Cat','قطة'],['🐰','Rabbit','أرنب'],['🦁','Lion','أسد'],['🐘','Elephant','فيل'],['🐒','Monkey','قرد'],['🦒','Giraffe','زرافة'],['🦊','Fox','ثعلب'],['🐬','Dolphin','دلفين'],['🐟','Fish','سمكة'],['🐢','Turtle','سلحفاة'],['🐙','Octopus','أخطبوط'],['🦉','Owl','بومة'],['🦜','Parrot','ببغاء']]},
+ {id:'fruits',en:'Fruits',ar:'الفواكه',icon:'🍎',items:[['🍎','Apple','تفاحة'],['🍌','Banana','موز'],['🍓','Strawberry','فراولة'],['🍊','Orange','برتقال'],['🍇','Grapes','عنب'],['🍉','Watermelon','بطيخ']]},
+ {id:'vegetables',en:'Vegetables',ar:'الخضروات',icon:'🥕',items:[['🥕','Carrot','جزر'],['🍅','Tomato','طماطم'],['🥒','Cucumber','خيار'],['🥔','Potato','بطاطس'],['🥦','Broccoli','بروكلي']]},
+ {id:'transport',en:'Transportation',ar:'المواصلات',icon:'🚌',items:[['🚗','Car','سيارة'],['🚌','Bus','أتوبيس'],['🚂','Train','قطار'],['✈️','Airplane','طائرة'],['🚲','Bicycle','دراجة'],['🚢','Ship','سفينة']]},
+ {id:'body',en:'Body Parts',ar:'أجزاء الجسم',icon:'👀',items:[['🙂','Head','رأس'],['👀','Eyes','عيون'],['👂','Ears','أذن'],['👃','Nose','أنف'],['👄','Mouth','فم'],['✋','Hand','يد'],['💪','Arm','ذراع'],['🦶','Foot','قدم'],['🦵','Knee','ركبة']]},
+ {id:'colors',en:'Colors',ar:'الألوان',icon:'🎨',items:[['🔴','Red','أحمر'],['🟡','Yellow','أصفر'],['🟢','Green','أخضر'],['🔵','Blue','أزرق'],['⚪','White','أبيض'],['⚫','Black','أسود'],['🟤','Brown','بني'],['🟣','Purple','بنفسجي']]},
+ {id:'numbers',en:'Numbers 1–10',ar:'الأرقام ١–١٠',icon:'🔢',items:[['1️⃣','One','واحد'],['2️⃣','Two','اثنان'],['3️⃣','Three','ثلاثة'],['4️⃣','Four','أربعة'],['5️⃣','Five','خمسة'],['6️⃣','Six','ستة'],['7️⃣','Seven','سبعة'],['8️⃣','Eight','ثمانية'],['9️⃣','Nine','تسعة'],['🔟','Ten','عشرة']]},
+ {id:'shapes',en:'Shapes',ar:'الأشكال',icon:'🔺',items:[['⚪','Circle','دائرة'],['🟥','Square','مربع'],['🔺','Triangle','مثلث'],['⭐','Star','نجمة'],['❤️','Heart','قلب'],['▰','Rectangle','مستطيل']]},
+ {id:'family',en:'My Family',ar:'عيلتي الجميلة',icon:'👨‍👩‍👦',items:[['👩','Mama','ماما'],['👨','Daddy','بابا'],['👵','Grandma','تيتا'],['👴','Grandpa','جدو']]},
+ {id:'feelings',en:'Feelings & Actions',ar:'المشاعر والأفعال',icon:'😊',items:[['😊','Happy','سعيد'],['😢','Sad','حزين'],['😂','Laughing','يضحك'],['😭','Crying','يبكي'],['🍽️','Eating','يأكل'],['🥤','Drinking','يشرب'],['🏃','Running','يجري'],['🤸','Jumping','يقفز'],['🎨','Drawing','يرسم'],['🚶','Walking','يمشي']]},
+ {id:'directions',en:'Directions',ar:'الاتجاهات',icon:'⬆️',items:[['⬆️','Up','فوق'],['⬇️','Down','تحت'],['⬅️','Left','يسار'],['➡️','Right','يمين'],['📥','In','داخل'],['📤','Out','خارج']]}
+];
+
+function openPage(id){
+ if(!$(id))return;
+ document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));
+ $(id).classList.remove('hidden');
+ if(historyStack[historyStack.length-1]!==id)historyStack.push(id);
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function goBack(){
+ if(historyStack.length>1)historyStack.pop();
+ const id=historyStack[historyStack.length-1]||'home';
+ document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));
+ $(id).classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function speak(text,lang){
+ if(!('speechSynthesis' in window)){alert('Audio is not available in this browser.');return}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);
+ u.lang=lang||((/[\u0600-\u06FF]/.test(text))?'ar-EG':'en-US');
+ u.rate=.8;speechSynthesis.speak(u);
+}
+function folderCard(icon,title,sub,fn,blue=false){
+ const b=document.createElement('button');b.className='card cloud-card '+(blue?'blue':'');
+ const i=document.createElement('div');i.className='folder-icon';i.textContent=icon;
+ const t=document.createElement('div');t.className='card-title';t.textContent=title;
+ const d=document.createElement('div');d.className='folder-desc';d.textContent=sub||'Explore together';
+ b.append(i,t,d);b.onclick=fn;return b;
+}
+function buildFolders(){
+ categories.forEach((c,i)=>{
+  $('englishFolders').append(folderCard(c.icon,c.en,'Discover new words',()=>showWords(c,'en'),i%2===0));
+  $('arabicFolders').append(folderCard(c.icon,c.ar,'هيا نكتشف الكلمات',()=>showWords(c,'ar'),i%2===1));
+ });
+}
+function showWords(cat,lang){
+ $('contentTitle').textContent=lang==='ar'?cat.ar:cat.en;
+ $('contentIntro').textContent=lang==='ar'?'اضغطي على الكلمة للاستماع إليها.':'Tap a card to hear the word.';
+ $('contentGrid').innerHTML='';
+ $('contentGrid').dir=lang==='ar'?'rtl':'ltr';
+ cat.items.forEach((it,i)=>{
+  const b=document.createElement('button');b.className='card word-card '+(i%2?'blue':'');
+  const pic=document.createElement('div');pic.className='word-picture';pic.textContent=it[0];
+  const label=document.createElement('div');label.className='word-label';label.textContent=lang==='ar'?it[2]:it[1];
+  const snd=document.createElement('span');snd.className='sound-btn';snd.textContent='🔊 '+(lang==='ar'?'اسمع':'Listen');
+  b.append(pic,label,snd);b.onclick=()=>speak(lang==='ar'?it[2]:it[1],lang==='ar'?'ar-EG':'en-US');
+  $('contentGrid').append(b);
+ });
+ openPage('content');
+}
+function simpleCards(id,items,rtl=false){
+ const grid=$(id);grid.innerHTML='';grid.dir=rtl?'rtl':'ltr';
+ items.forEach((it,i)=>grid.append(folderCard(it[0],it[1],it[2],()=>showActivity(it[1],it[0],it[2],rtl?'ar-EG':'en-US'),i%2===0)));
+}
+function showActivity(title,picture,description,lang){
+ $('contentTitle').textContent=title;
+ $('contentIntro').textContent=description;
+ $('contentGrid').innerHTML='';
+ const b=document.createElement('button');b.className='card';b.style.gridColumn='1/-1';
+ const p=document.createElement('div');p.className='activity-picture';p.textContent=picture;
+ const t=document.createElement('div');t.className='card-title';t.textContent=title;
+ const s=document.createElement('button');s.className='action-btn';s.textContent='🔊 '+(lang==='ar-EG'?'استمع':'Listen');
+ s.onclick=e=>{e.stopPropagation();speak(title,lang)};
+ b.append(p,t,s);$('contentGrid').append(b);openPage('content');
+}
+simpleCards('worshipGrid',[
+ ['🧼','الوضوء','نتعلم خطوات الوضوء مع ماما.'],
+ ['🕌','الصلاة','نقف بهدوء مع ماما ونتعلم الصلاة.'],
+ ['🍽️','بسم الله','نقول بسم الله قبل الطعام.'],
+ ['💚','الحمد لله','نقول الحمد لله بعد الطعام.']
+],true);
+simpleCards('routineGrid',[
+ ['🌞','Wake Up','I wake up in the morning.'],
+ ['🪥','Brush Teeth','I brush my teeth.'],
+ ['🧼','Wash Face','I wash my face.'],
+ ['🥣','Eat Breakfast','I eat my breakfast.'],
+ ['🧸','Tidy Toys','I put my toys away.'],
+ ['👨‍👩‍👦','Help My Family','I help my family.']
+]);
+simpleCards('montessoriGrid',[
+ ['🥄','Spoon Transfer','With an adult, move large soft items between bowls.'],
+ ['🧦','Match Socks','Find two socks that look alike.'],
+ ['🧺','Fold a Cloth','Fold a small cloth with an adult.'],
+ ['🟡','Sort Colors','Group large objects by color with supervision.'],
+ ['🧱','Build Blocks','Stack large blocks on the floor.'],
+ ['🧩','Match Pictures','Match two familiar picture cards.']
+]);
+simpleCards('extrasGrid',[
+ ['👋','Hello & Goodbye','Practice friendly greetings.'],
+ ['🎵','Action Time','Clap, wave, and move together.'],
+ ['👀','Find and Point','Point to familiar things around you.'],
+ ['❤️','Kind Hands','Practice gentle hands and sharing.']
+]);
+function buildLetters(){
+ const items=[['A a','Letter A'],['B b','Letter B'],['C c','Letter C'],['D d','Letter D'],['E e','Letter E'],['F f','Letter F']];
+ const c={en:'Letters',ar:'الحروف',items:items.map(x=>[x[0],x[1],x[1]])};
+ const b=folderCard('🔤','Letters','A • B • C',()=>showWords(c,'en'));
+ $('englishFolders').append(b);
+}
+buildFolders();
+buildLetters();
+
+/* Eight tracing paths */
+const slides=[
+ ['Straight Lines','🧸✏️','Follow the straight dotted path.',[[25,105],[475,105]]],
+ ['Vertical Lines','🐻⬇️','Move from top to bottom.',[[250,20],[250,190]]],
+ ['Horizontal Lines','🚗✏️','Move from left to right.',[[25,105],[475,105]]],
+ ['Curved Lines','🐍✏️','Follow the gentle curve.',[[25,150],[100,30],[180,140],[260,35],[340,140],[475,65]]],
+ ['Wavy Lines','🌊✏️','Follow the waves slowly.',[[25,100],[80,45],[135,155],[190,45],[245,155],[300,45],[355,155],[420,50],[475,100]]],
+ ['Zigzag Lines','⛰️✏️','Follow the zigzag path.',[[25,160],[100,35],[175,160],[250,35],[325,160],[400,35],[475,160]]],
+ ['Circles','🔵✏️','Trace around the circle.', 'circle'],
+ ['Pencil Control','🐻✏️','Follow the path carefully.',[[25,150],[90,40],[155,120],[220,65],[285,155],[350,45],[415,110],[475,50]]]
+];
+let slide=0,traceCtx,traceDrawing=false,traceLast=null,traceScale=1;
+function drawTraceGuide(){
+ const c=$('traceCanvas'),r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+ c.width=r.width*dpr;c.height=r.height*dpr;
+ traceCtx=c.getContext('2d');traceCtx.setTransform(dpr,0,0,dpr,0,0);
+ traceScale=r.width/500;
+ traceCtx.clearRect(0,0,r.width,r.height);
+ traceCtx.save();traceCtx.scale(traceScale,traceScale);
+ traceCtx.strokeStyle='#B7DCEC';traceCtx.lineWidth=6;traceCtx.setLineDash([5,9]);traceCtx.lineCap='round';
+ if(slides[slide][3]==='circle'){
+  traceCtx.beginPath();traceCtx.arc(250,105,65,0,Math.PI*2);traceCtx.stroke();
+ }else{
+  const pts=slides[slide][3];traceCtx.beginPath();traceCtx.moveTo(...pts[0]);pts.slice(1).forEach(p=>traceCtx.lineTo(...p));traceCtx.stroke();
+ }
+ traceCtx.setLineDash([]);traceCtx.fillStyle='#E89D61';traceCtx.beginPath();traceCtx.arc(25,slides[slide][3]==='circle'?105:slides[slide][3][0][1],7,0,Math.PI*2);traceCtx.fill();
+ traceCtx.restore();
+}
+function renderTrace(){
+ $('traceTitle').textContent=slides[slide][0];$('traceEmoji').textContent=slides[slide][1];$('traceDesc').textContent=slides[slide][2];
+ $('traceCount').textContent=(slide+1)+' / '+slides.length;
+ $('prevTrace').disabled=slide===0;$('nextTrace').disabled=slide===slides.length-1;
+ drawTraceGuide();
+}
+function changeTrace(n){slide=Math.max(0,Math.min(slides.length-1,slide+n));renderTrace()}
+function clearTrace(){drawTraceGuide()}
+function canvasPoint(canvas,e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+const tc=$('traceCanvas');tc.style.touchAction='none';
+tc.addEventListener('pointerdown',e=>{traceDrawing=true;traceLast=canvasPoint(tc,e);tc.setPointerCapture(e.pointerId)});
+tc.addEventListener('pointermove',e=>{if(!traceDrawing||!traceLast)return;const p=canvasPoint(tc,e);traceCtx.beginPath();traceCtx.moveTo(traceLast.x,traceLast.y);traceCtx.lineTo(p.x,p.y);traceCtx.strokeStyle='#E89D61';traceCtx.lineWidth=5;traceCtx.lineCap='round';traceCtx.stroke();traceLast=p});
+['pointerup','pointercancel'].forEach(ev=>tc.addEventListener(ev,()=>{traceDrawing=false;traceLast=null}));
+window.addEventListener('resize',()=>{if(!$('writing').classList.contains('hidden'))drawTraceGuide();if(!$('drawing').classList.contains('hidden'))resizeArt()});
+$('writing').addEventListener('transitionend',()=>{});
+const art=$('drawCanvas');let artCtx,artColor='#E89D61',artDrawing=false,artLast=null;
+function resizeArt(){
+ const r=art.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+ let old=null;try{old=art.toDataURL()}catch(e){}
+ art.width=r.width*dpr;art.height=r.height*dpr;artCtx=art.getContext('2d');artCtx.setTransform(dpr,0,0,dpr,0,0);artCtx.lineCap='round';artCtx.lineJoin='round';
+}
+function clearArt(){if(!artCtx)resizeArt();artCtx.clearRect(0,0,art.width,art.height)}
+art.style.touchAction='none';
+art.addEventListener('pointerdown',e=>{artDrawing=true;artLast=canvasPoint(art,e);art.setPointerCapture(e.pointerId)});
+art.addEventListener('pointermove',e=>{if(!artDrawing||!artLast)return;const p=canvasPoint(art,e);artCtx.beginPath();artCtx.moveTo(artLast.x,artLast.y);artCtx.lineTo(p.x,p.y);artCtx.strokeStyle=artColor;artCtx.lineWidth=6;artCtx.stroke();artLast=p});
+['pointerup','pointercancel'].forEach(ev=>art.addEventListener(ev,()=>{artDrawing=false;artLast=null}));
+['#E85D5D','#F4C542','#71B77A','#5BA9D5','#9B7AC9','#5C4A3E','#E89D61','#222222'].forEach(col=>{
+ const b=document.createElement('button');b.className='color-dot';b.style.background=col;b.setAttribute('aria-label','Choose drawing color');b.onclick=()=>artColor=col;$('palette').append(b);
+});
+let gameAnswer;
+const gameItems=[['🐱','cat'],['🐶','dog'],['🍎','apple'],['🍌','banana'],['🚗','car'],['🐟','fish'],['🐮','cow'],['🥕','carrot'],['🚌','bus'],['🦁','lion']];
+function newGame(){
+ const shuffled=[...gameItems].sort(()=>Math.random()-.5);
+ gameAnswer=shuffled[0];const choices=[gameAnswer,...shuffled.slice(1,3)].sort(()=>Math.random()-.5);
+ $('gameQuestion').textContent='Find the '+gameAnswer[1]+'!';
+ $('gameFeedback').textContent='';$('gameChoices').innerHTML='';
+ choices.forEach(it=>{
+  const b=document.createElement('button');b.className='card blue';const p=document.createElement('div');p.className='choice';p.textContent=it[0];
+  const t=document.createElement('div');t.className='card-title';t.textContent='?';
+  b.append(p,t);b.onclick=()=>{if(it===gameAnswer){$('gameFeedback').textContent='Wonderful! ⭐';t.textContent=it[1];speak(it[1])}else{$('gameFeedback').textContent='Try again! You can do it 💛'}};
+  $('gameChoices').append(b);
+ });
+}
+newGame();
+const originalOpen=openPage;
+openPage=function(id){originalOpen(id);if(id==='writing')setTimeout(renderTrace,80);if(id==='drawing')setTimeout(resizeArt,80);if(id==='games')newGame()};
+</script>
+</body>
+</html>
